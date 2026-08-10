@@ -1,5 +1,16 @@
 var _yr=document.getElementById('yr'); if(_yr)_yr.textContent=new Date().getFullYear();
 
+/* Works both at the custom-domain root and at GitHub Pages' project path. */
+function pfSiteBase(){
+  var p=String(location.pathname||'/'),marker='/blog/',i=p.indexOf(marker);
+  if(i>=0)return p.slice(0,i);
+  if(/\/blog\/?$/.test(p))return p.replace(/\/blog\/?$/,'');
+  if(p==='/'||/\/$/.test(p))return p.replace(/\/$/,'');
+  return p.slice(0,p.lastIndexOf('/'));
+}
+function pfSitePath(path){return pfSiteBase()+String(path||'');}
+window.pfSitePath=pfSitePath;
+
 /* ---------- language ---------- */
 var LANGS=['en','es','de','zh'];
 function detectLang(){
@@ -343,26 +354,27 @@ document.addEventListener('click', function(e){
 /* ---------- posts destacados del blog en la portada ---------- */
 (function(){
   var box=document.getElementById('homeblog');
-  if(!box || !window.POSTS || !window.POSTS.length) return;
+  if(!box || !window.PRIMO_POSTS || !window.PRIMO_POSTS.length) return;
   var L=['en','es','de','zh'];
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function localPath(v,fallback){
     v=String(v||'');
     return /^\/(?!\/)[A-Za-z0-9._~!$&()*+,;=:@/%-]*$/.test(v)?v:fallback;
   }
+  function sitePath(v){return window.pfSitePath?window.pfSitePath(v):v;}
   function ml(o){ if(!o) return ''; if(typeof o==='string') return esc(o);
     return L.map(function(l){return '<span class="lang-'+l+'">'+esc(o[l]||o.en||'')+'</span>';}).join(''); }
   function card(p){
     var first={};
     L.forEach(function(l){ first[l]=String((p.body&&(p.body[l]||p.body.en))||'').split('\n')[0]; });
     var go=p.link?p.link.label:{en:'Read more',es:'Leer más',de:'Mehr lesen',zh:'阅读更多'};
-    return '<a class="hbpost" href="'+localPath(p.link&&p.link.url,'/blog')+'">'+
+    return '<a class="hbpost" href="'+sitePath(localPath(p.link&&p.link.url,'/blog'))+'">'+
       '<div><div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+
       (p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
       '<h3>'+ml(p.title)+'</h3><p>'+ml(first)+'</p></div>'+
       '<span class="hbgo">'+ml(go)+' &rarr;</span></a>';
   }
-  var posts=window.POSTS.slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
+  var posts=window.PRIMO_POSTS.slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
   var featured=posts.filter(function(p){return p.featured;});
   if(!featured.length) return;
   box.innerHTML='<h3 class="subhead homeblog-head"><span class="lang-en">Featured</span><span class="lang-es">Destacados</span><span class="lang-de">Highlights</span><span class="lang-zh">精选</span></h3>'+

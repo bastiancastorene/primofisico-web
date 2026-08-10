@@ -1,5 +1,5 @@
 /* Posts de Primo Físico · editar aquí; lo usan /blog y la portada */
-window.POSTS = [
+window.PRIMO_POSTS = [
   {
     date: "2026-08-09",
     dateLabel: "Aug 2026",
