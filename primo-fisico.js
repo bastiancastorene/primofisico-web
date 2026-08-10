@@ -89,6 +89,7 @@
     var path=String(value||'');
     return /^\/(?!\/)[A-Za-z0-9._~!$&()*+,;=:@/%-]*$/.test(path)?path:'/blog';
   }
+  function sitePath(value){return window.pfSitePath?window.pfSitePath(value):value;}
   function dateValue(value){
     var time=Date.parse(String(value||''));
     return isFinite(time)?time:0;
@@ -126,7 +127,7 @@
       (featured?'<span class="pf-featured-star" aria-hidden="true">&#9733;</span>':'')+
       '<div class="pmeta"><span class="pdate">'+ml(post.dateLabel||post.date)+'</span>'+(post.category?'<span class="pcat">'+ml(post.category)+'</span>':'')+'<span class="pcat pf-audience-badge" data-audience="'+mode+'">'+ml(POST_MODE_LABELS[mode])+'</span></div>'+ 
       '<h3>'+ml(post.title)+'</h3>'+bodyHtml(post.body)+mediaHtml(post)+
-      '<a class="plink" href="'+esc(validPath(link.url))+'">'+ml(link.label)+arrowAfter+'</a></article>';
+      '<a class="plink" href="'+esc(sitePath(validPath(link.url)))+'">'+ml(link.label)+arrowAfter+'</a></article>';
   }
   function templateElement(html){
     var template=document.createElement('template');template.innerHTML=html.trim();return template.content.firstElementChild;
@@ -178,7 +179,7 @@
     new MutationObserver(renumberNoteFeed).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
   }
   function fetchMaterials(){
-    var sources=[{url:'/notes-lectures.html',kind:'notes'},{url:'/notes-teaching.html',kind:'teaching'}];
+    var sources=[{url:sitePath('/notes-lectures.html'),kind:'notes'},{url:sitePath('/notes-teaching.html'),kind:'teaching'}];
     return Promise.all(sources.map(function(source){
       return fetch(source.url,{credentials:'same-origin'}).then(function(response){if(!response.ok)throw new Error(source.url);return response.text();}).then(function(text){
         var parsed=new DOMParser().parseFromString(text,'text/html');
@@ -249,7 +250,7 @@
     return '<article class="pf-search-card">'+
       '<div class="pf-search-meta"><span class="pf-search-type">'+ml(item.type)+'</span>'+category+'<span class="pf-search-date">'+ml(item.date)+'</span></div>'+
       '<h3>'+ml(item.title)+'</h3><p>'+ml(item.summary)+'</p>'+
-      '<a class="plink" href="'+esc(item.url)+'"'+target+'>'+ml(item.action)+' <span aria-hidden="true">&#8594;</span></a></article>';
+      '<a class="plink" href="'+esc(item.external?item.url:sitePath(item.url))+'"'+target+'>'+ml(item.action)+' <span aria-hidden="true">&#8594;</span></a></article>';
   }
   function renderSearch(){
     var input=document.getElementById('pf-search-input'),results=document.getElementById('pf-search-results'),status=document.getElementById('pf-search-status'),empty=document.getElementById('pf-search-empty'),clear=document.getElementById('pf-search-clear');
@@ -339,13 +340,13 @@
     var script=document.createElement('script');script.src=src;script.onload=done;script.onerror=done;document.body.appendChild(script);
   }
   function loadInteractions(done){
-    loadScript('/blog-interactions.js?v=8',function(){
+    loadScript(sitePath('/blog-interactions.js?v=10'),function(){
       loadScript('https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&render=explicit',function(){if(done)done();});
     });
   }
   setupSearch();
   setupSearchDrawer();
-  var posts=(window.POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
+  var posts=(window.PRIMO_POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
   fetchMaterials().then(function(materials){render(posts,materials);}).catch(function(){render(posts,[]);});
 })();
 

@@ -7,20 +7,20 @@
 <title>El helio líquido que se niega a congelarse &mdash; Primo Físico</title>
 <meta name="description" content="Por qué el helio líquido puede volverse superfluido y cómo el modelo de Landau aproxima el punto lambda." />
 <link rel="canonical" href="https://www.primofisico.com/blog/liquid-helium" />
-<link rel="icon" type="image/png" href="/assets/primo-fisico-logo.png?v=2" />
-<link rel="stylesheet" href="/styles.css?v=11" />
-<link rel="stylesheet" href="/primo-fisico.css?v=33" />
+<link rel="icon" type="image/png" href="../assets/primo-fisico-logo.png?v=2" />
+<link rel="stylesheet" href="../styles.css?v=11" />
+<link rel="stylesheet" href="../primo-fisico.css?v=33" />
 </head>
 <body>
 <div class="bg-glow"></div>
 <canvas id="energy"></canvas>
 <nav>
-  <a href="/" class="brand"><img src="/assets/primo-fisico-logo.png?v=2" alt="" width="38" height="38" style="vertical-align:middle;margin-right:8px" />Primo Físico</a>
+  <a href="../" class="brand"><img src="../assets/primo-fisico-logo.png?v=2" alt="" width="38" height="38" style="vertical-align:middle;margin-right:8px" />Primo Físico</a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="/?open-search=1"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></a>
-      <a href="/#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
-      <a href="/#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
+      <a href="../?open-search=1"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></a>
+      <a href="../#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
+      <a href="../#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
     </div>
     <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
     <div class="lang-dd">
@@ -37,7 +37,7 @@
 </nav>
 
 <div class="backbar">
-  <a class="btn btn-ghost" href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  <a class="btn btn-ghost" href="../">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
 </div>
 <div class="modewash"></div><div class="modedark"></div>
 <section class="reveal">
@@ -63,7 +63,7 @@
     <p><span class="lang-en">Helium behaves this way because of some rather particular quantum rules. Its atoms are <b>bosons</b>. Put simply, they can share the same quantum configuration, like passengers sharing a seat without fighting over it. At such low temperatures, many atoms stop acting like separate little balls and start moving as if they were listening to the same music.</span><span class="lang-es">El helio se comporta así por unas reglas cuánticas bastante particulares. Sus átomos son <b>bosones</b>. Dicho sin ponerse solemne: pueden compartir la misma configuración cuántica, como pasajeros que comparten una butaca sin pelearse por ella. A temperaturas tan bajas, muchos átomos dejan de actuar como bolitas separadas y empiezan a moverse como si escucharan la misma música.</span><span class="lang-de">Helium verhält sich wegen einiger ziemlich besonderer Quantenregeln so. Seine Atome sind <b>Bosonen</b>. Einfach gesagt können sie dieselbe quantenmechanische Konfiguration teilen, wie Fahrgäste, die sich einen Sitz teilen, ohne darum zu streiten. Bei so tiefen Temperaturen hören viele Atome auf, wie getrennte kleine Kugeln zu handeln, und beginnen sich zu bewegen, als hörten sie dieselbe Musik.</span><span class="lang-zh">氦之所以如此，是因为一些相当特别的量子规则。它的原子是<b>玻色子</b>。简单地说，它们可以共享同一种量子状态，就像乘客共享一个座位而不为此争吵。在如此低的温度下，许多原子不再像彼此分开的“小球”，而开始像听着同一首音乐那样一起运动。</span></p>
     <p><span class="lang-en">Why does helium refuse to freeze? Because, at that scale, the floor of the party never becomes completely still. Even if you turn off the music and ask everyone to stand perfectly still, a small quantum tremor remains. That motion keeps the atoms from locking together into a rigid solid. The liquid keeps room to move.</span><span class="lang-es">¿Por qué el helio se niega a congelarse? Porque, a esa escala, el piso de la fiesta nunca se queda del todo quieto. Aunque apagues la música y les pidas a todos quedarse inmóviles, queda un pequeño temblor cuántico de fondo. Ese movimiento impide que los átomos se amarren y formen un sólido rígido. El líquido conserva espacio para moverse.</span><span class="lang-de">Warum weigert sich Helium zu gefrieren? Weil der Boden der Party auf dieser Skala nie ganz stillsteht. Selbst wenn du die Musik ausschaltest und alle bittest, vollkommen stillzustehen, bleibt ein kleines Quantenzittern. Diese Bewegung hindert die Atome daran, sich zu einem starren Festkörper zu verriegeln. Die Flüssigkeit behält ihren Bewegungsspielraum.</span><span class="lang-zh">为什么氦不肯冻结？因为在那个尺度上，聚会的地板从来不会完全静止。即使关掉音乐、要求所有人一动不动，背景中仍会留下细微的量子颤动。这种运动阻止原子彼此锁定、形成坚硬的固体。液体仍然保留着移动的空间。</span></p>
     <p><span class="lang-en">As the temperature drops, the ordinary jostling quiets down. The smooth group gains ground until the party crosses a special boundary. That boundary is the <b>lambda point</b>: a door between normal helium and superfluid helium. No wall appears inside the bottle; the same crowd simply begins to behave differently.</span><span class="lang-es">A medida que baja la temperatura, el ajetreo normal se calma. El grupo que se mueve suavemente gana terreno, hasta que la fiesta cruza una frontera especial. Esa frontera se llama <b>punto lambda</b>: una puerta entre el helio normal y el superfluido. Dentro de la botella no aparece ninguna pared; la misma multitud empieza a comportarse de otra manera.</span><span class="lang-de">Wenn die Temperatur sinkt, beruhigt sich das gewöhnliche Gedränge. Die gleitende Gruppe gewinnt an Raum, bis die Party eine besondere Grenze überschreitet. Diese Grenze ist der <b>Lambda-Punkt</b>: eine Tür zwischen normalem und superfluidem Helium. Im Inneren der Flasche erscheint keine Wand; dieselbe Menge beginnt einfach, sich anders zu verhalten.</span><span class="lang-zh">随着温度下降，普通的推挤逐渐安静下来。顺滑移动的那群人不断扩大优势，直到聚会越过一道特殊边界。这道边界就是<b>λ点</b>：普通氦与超流氦之间的一扇门。瓶子里不会出现一堵墙；同一群人只是开始以不同方式行动。</span></p>
-    <figure class="pfig"><img src="/assets/helium-phase.jpg" alt="Diagrama de fase esquemático del helio-4" loading="lazy" /><figcaption><span class="lang-en">A map of the party: below the lambda line, helium enters its superfluid phase.</span><span class="lang-es">Un mapa de la fiesta: por debajo de la línea lambda, el helio entra en su fase superfluida.</span><span class="lang-de">Eine Karte der Party: Unterhalb der Lambda-Linie tritt Helium in die superfluide Phase ein.</span><span class="lang-zh">聚会地图：低于λ线后，氦进入超流相。</span></figcaption></figure>
+    <figure class="pfig"><img src="../assets/helium-phase.jpg" alt="Diagrama de fase esquemático del helio-4" loading="lazy" /><figcaption><span class="lang-en">A map of the party: below the lambda line, helium enters its superfluid phase.</span><span class="lang-es">Un mapa de la fiesta: por debajo de la línea lambda, el helio entra en su fase superfluida.</span><span class="lang-de">Eine Karte der Party: Unterhalb der Lambda-Linie tritt Helium in die superfluide Phase ein.</span><span class="lang-zh">聚会地图：低于λ线后，氦进入超流相。</span></figcaption></figure>
 
     <h3><span class="lang-en">Waves and whirlpools on the dance floor</span><span class="lang-es">Ondas y remolinos en la pista</span><span class="lang-de">Wellen und Wirbel auf der Tanzfläche</span><span class="lang-zh">舞池上的波与漩涡</span></h3>
     <p><span class="lang-en">Now look at the party from above. Sometimes a wave moves, not a particular person: one person nudges the next and the nudge travels through the room. Sometimes a whirlpool forms in one spot. In physics, these two kinds of movement have names — <b>phonons and rotons</b>. But the picture matters more than the vocabulary.</span><span class="lang-es">Ahora mira la fiesta desde arriba. A veces se mueve una ola, no una persona: alguien empuja al siguiente y el empujón recorre la sala. Otras veces se forma un remolino en un solo lugar. En física, a estas dos formas de movimiento les pusieron nombres: <b>fonones y rotones</b>. Pero la imagen importa más que el vocabulario.</span><span class="lang-de">Schau nun von oben auf die Party. Manchmal bewegt sich eine Welle, nicht eine bestimmte Person: Einer stupst den Nächsten an, und der Stoß läuft durch den Raum. Manchmal bildet sich an einer Stelle ein Wirbel. In der Physik haben diese beiden Bewegungsarten Namen — <b>Phononen und Rotonen</b>. Aber das Bild ist wichtiger als das Vokabular.</span><span class="lang-zh">现在从上方看这场聚会。有时移动的是一道波，而不是某个特定的人：一个人推向下一个人，推力就这样穿过房间。有时运动则像在某个地方形成了漩涡。在物理学中，这两种运动叫作<b>声子与旋子</b>。但图像比术语更重要。</span></p>
@@ -101,13 +101,13 @@
   <p class="aidisc"><span class="lang-en">Plain-language version drafted with AI assistance and reviewed by the authors.</span><span class="lang-es">Versión divulgativa redactada con asistencia de IA y revisada por los autores.</span><span class="lang-de">Allgemeinverständliche Fassung mit KI-Unterstützung verfasst und von den Autoren geprüft.</span><span class="lang-zh">科普版本在 AI 协助下撰写并经作者审阅。</span></p>
 </section>
 <div class="backbar">
-  <a class="btn btn-ghost" href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  <a class="btn btn-ghost" href="../">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
 </div>
 <footer>
   <p>&copy; <span id="yr"></span> Primo Físico</p>
   <p style="margin-top:6px;opacity:.7">Physics for everyone &middot; Notes and explanations</p>
 </footer>
-<script src="/app.js"></script>
+<script src="../app.js?v=13"></script>
 <script>
 (function(){
   var ms=document.getElementById('ms'), glow=document.getElementById('msglow');
@@ -138,7 +138,7 @@
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2"></script>
-<script src="/blog-interactions.js?v=8"></script>
+<script src="../blog-interactions.js?v=10"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&amp;render=explicit" async defer></script>
 </body>
 </html>
