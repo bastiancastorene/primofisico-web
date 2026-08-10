@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Primo Físico — física para todos</title>
+<meta name="description" content="Divulgación de física compleja, notas, apuntes y guías avanzadas en cuatro idiomas." />
+<link rel="icon" type="image/png" href="/assets/primo-fisico-logo.png?v=2" />
+<link rel="apple-touch-icon" href="/assets/primo-fisico-logo.png?v=2" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Primo Físico" />
+<meta property="og:title" content="Primo Físico — notas y explicaciones de física" />
+<meta property="og:description" content="Divulgación de física compleja, notas, apuntes y guías avanzadas en cuatro idiomas." />
+<meta property="og:image" content="/assets/primo-fisico-og.png?v=2" />
+<meta property="og:image:alt" content="Logo de Primo Físico" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Primo Físico — notas y explicaciones de física" />
+<meta name="twitter:description" content="Divulgación de física compleja, notas, apuntes y guías avanzadas en cuatro idiomas." />
+<meta name="twitter:image" content="/assets/primo-fisico-og.png?v=2" />
+<link rel="stylesheet" href="/styles.css?v=11" />
+<link rel="stylesheet" href="/primo-fisico.css?v=33" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+
+<nav>
+  <a href="#about" class="brand pf-about-trigger"><span class="pf-brand-mark"><img class="pf-brand-logo" src="/assets/primo-fisico-logo.png?v=2" alt="" /></span><span>Primo Físico</span></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <button id="pf-search-toggle" class="nav-search-toggle" type="button" aria-expanded="false" aria-controls="buscar"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></button>
+      <a href="#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
+      <a href="#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+
+<section id="buscar" class="pf-search-drawer" hidden aria-labelledby="pf-search-title">
+  <div class="pf-search-drawer-inner">
+    <div class="pf-search-drawer-head">
+      <div>
+        <span class="eyebrow"><span class="lang-en">Search the library</span><span class="lang-es">Buscar en la biblioteca</span><span class="lang-de">Bibliothek durchsuchen</span><span class="lang-zh">搜索资料库</span></span>
+        <div class="pf-section-heading"><img class="pf-section-mark" src="/assets/section-mark-gradient.png?v=1" alt="" aria-hidden="true" /><h2 id="pf-search-title" class="section-title"><span class="lang-en">Find a topic to read</span><span class="lang-es">Encuentra un tema para leer</span><span class="lang-de">Finde ein Thema zum Lesen</span><span class="lang-zh">找到想读的主题</span></h2></div>
+      </div>
+      <button id="pf-search-close" class="pf-search-close" type="button"><span aria-hidden="true">&times;</span><span class="sr-only"><span class="lang-en">Close search</span><span class="lang-es">Cerrar búsqueda</span><span class="lang-de">Suche schließen</span><span class="lang-zh">关闭搜索</span></span></button>
+    </div>
+    <p class="section-lead"><span class="lang-en">Search posts, notes, guides and teaching material by title or keyword.</span><span class="lang-es">Busca posts, apuntes, guías y material docente por título o palabra clave.</span><span class="lang-de">Suche Beiträge, Notizen, Leitfäden und Lehrmaterial nach Titel oder Stichwort.</span><span class="lang-zh">按标题或关键词搜索文章、笔记、指南和教学资料。</span></p>
+    <div class="pf-search-shell">
+      <form id="pf-search-form" class="pf-search-form" role="search">
+        <label class="pf-search-label" for="pf-search-input"><span class="lang-en">What are you looking for?</span><span class="lang-es">¿Qué estás buscando?</span><span class="lang-de">Wonach suchst du?</span><span class="lang-zh">你在寻找什么？</span></label>
+        <div class="pf-search-control">
+          <span class="pf-search-icon" aria-hidden="true"></span>
+          <input id="pf-search-input" class="pf-search-input" type="search" autocomplete="off" spellcheck="false" />
+          <button id="pf-search-clear" class="pf-search-clear" type="button" hidden><span class="lang-en">Clear</span><span class="lang-es">Limpiar</span><span class="lang-de">Leeren</span><span class="lang-zh">清除</span></button>
+          <button class="btn btn-primary pf-search-submit" type="submit"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></button>
+        </div>
+        <p class="pf-search-hint"><span class="lang-en">Try: spin, entropy, graphene, Maxwell or statistical mechanics.</span><span class="lang-es">Prueba: espín, entropía, grafeno, Maxwell o mecánica estadística.</span><span class="lang-de">Versuche: Spin, Entropie, Graphen, Maxwell oder statistische Mechanik.</span><span class="lang-zh">可以试试：自旋、熵、石墨烯、麦克斯韦或统计力学。</span></p>
+      </form>
+      <div id="pf-search-status" class="pf-search-status" aria-live="polite" hidden></div>
+      <div id="pf-search-results" class="pf-search-results" aria-live="polite"></div>
+      <div id="pf-search-empty" class="empty pf-search-empty" hidden><span class="lang-en">No material matches that search.</span><span class="lang-es">No hay material que coincida con esa búsqueda.</span><span class="lang-de">Zu dieser Suche wurde kein Material gefunden.</span><span class="lang-zh">没有找到与搜索匹配的资料。</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section id="top" class="pf-hero reveal">
+    <div class="pf-hero-inner">
+      <div class="pf-hero-copy">
+        <span class="eyebrow"><span class="lang-en">Physics for everyone</span><span class="lang-es">Física para Todos</span><span class="lang-de">Physik für alle</span><span class="lang-zh">面向所有人的物理</span></span>
+        <h1>Primo Físico</h1>
+        <p class="pf-tagline"><span class="lang-en">Stay curious: maybe you’ll be the next physicist cousin in your family.</span><span class="lang-es">Sigue Curioso: quizás tú seas el próximo primo físico de tu familia.</span><span class="lang-de">Bleib neugierig: Vielleicht wirst du der nächste Physiker-Cousin in deiner Familie.</span><span class="lang-zh">保持好奇：说不定你会成为家里的下一位“物理学家表亲”。</span></p>
+        <p class="pf-lead"><span class="lang-en">Posts that make complex physics approachable, alongside notes, lecture material and advanced physics guides.</span><span class="lang-es">Posts para acercarte a la física compleja de forma divulgativa, junto con notas, apuntes y guías de física avanzada.</span><span class="lang-de">Beiträge, die komplexe Physik verständlich machen, ergänzt durch Notizen, Vorlesungsmaterial und Leitfäden zur fortgeschrittenen Physik.</span><span class="lang-zh">用科普方式理解复杂物理的文章，以及高级物理笔记、讲义和指南。</span></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#posts"><span class="lang-en">Read the posts</span><span class="lang-es">Leer los posts</span><span class="lang-de">Beiträge lesen</span><span class="lang-zh">阅读文章</span><span aria-hidden="true">&#8594;</span></a>
+          <a class="btn btn-ghost" href="#material"><span class="lang-en">Notes and guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen und Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
+        </div>
+      </div>
+      <a class="pf-hero-orbit pf-about-trigger" href="#about"><span class="sr-only"><span class="lang-en">About Primo Físico</span><span class="lang-es">Sobre Primo Físico</span><span class="lang-de">Über Primo Físico</span><span class="lang-zh">关于 Primo Físico</span></span><span class="pf-orbit-core"><img src="/assets/primo-fisico-logo.png?v=2" alt="" /></span><span class="pf-orbit-ring pf-orbit-ring-a"></span><span class="pf-orbit-ring pf-orbit-ring-b"></span><span class="pf-orbit-dot pf-orbit-dot-a"></span><span class="pf-orbit-dot pf-orbit-dot-b"></span></a>
+    </div>
+  </section>
+
+  <section id="explorar" class="reveal pf-paths">
+    <span class="eyebrow"><span class="lang-en">Choose your route</span><span class="lang-es">Elige tu ruta</span><span class="lang-de">Wähle deinen Weg</span><span class="lang-zh">选择你的路径</span></span>
+    <div class="pf-section-heading"><img class="pf-section-mark" src="/assets/section-mark-gradient.png?v=1" alt="" aria-hidden="true" /><h2 class="section-title"><span class="lang-en">What do you want to read?</span><span class="lang-es">¿Qué quieres leer?</span><span class="lang-de">Was möchtest du lesen?</span><span class="lang-zh">你想读什么？</span></h2></div>
+    <p class="section-lead"><span class="lang-en">Start with an accessible explanation, or go directly to notes and advanced guides.</span><span class="lang-es">Empieza con una explicación divulgativa o ve directamente a las notas y guías avanzadas.</span><span class="lang-de">Beginne mit einer verständlichen Erklärung oder gehe direkt zu Notizen und Leitfäden für Fortgeschrittene.</span><span class="lang-zh">从通俗解读开始，或直接进入高级物理笔记与指南。</span></p>
+    <div class="pf-route-grid">
+      <a class="pf-route-card" href="#posts">
+        <span class="pf-route-icon" aria-hidden="true">&#8599;</span>
+        <span class="pf-route-label"><span class="lang-en">Posts for curious minds</span><span class="lang-es">Posts para curiosos</span><span class="lang-de">Beiträge für Neugierige</span><span class="lang-zh">写给好奇者的文章</span></span>
+        <span class="pf-route-copy"><span class="lang-en">Complex physics explained through clear stories, analogies and context.</span><span class="lang-es">Física compleja explicada con historias claras, analogías y contexto.</span><span class="lang-de">Komplexe Physik mit klaren Geschichten, Analogien und Kontext erklärt.</span><span class="lang-zh">用清晰的故事、类比和背景理解复杂物理。</span></span>
+        <span class="pf-route-link"><span class="lang-en">Browse the posts</span><span class="lang-es">Ver los posts</span><span class="lang-de">Beiträge ansehen</span><span class="lang-zh">浏览文章</span><span aria-hidden="true">&#8594;</span></span>
+      </a>
+      <a class="pf-route-card pf-route-card-alt" href="#material">
+        <span class="pf-route-icon" aria-hidden="true">&#8595;</span>
+        <span class="pf-route-label"><span class="lang-en">Notes and advanced guides</span><span class="lang-es">Notas y guías avanzadas</span><span class="lang-de">Notizen und Leitfäden für Fortgeschrittene</span><span class="lang-zh">笔记与进阶指南</span></span>
+        <span class="pf-route-copy"><span class="lang-en">Lecture notes, worked material and teaching resources for deeper study.</span><span class="lang-es">Apuntes, material desarrollado y recursos docentes para estudiar con más profundidad.</span><span class="lang-de">Vorlesungsnotizen, ausgearbeitetes Material und Lehrressourcen für ein vertieftes Studium.</span><span class="lang-zh">讲义、详细材料与教学资源，适合深入学习。</span></span>
+        <span class="pf-route-link"><span class="lang-en">Open the library</span><span class="lang-es">Abrir la biblioteca</span><span class="lang-de">Bibliothek öffnen</span><span class="lang-zh">打开资料库</span><span aria-hidden="true">&#8594;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="posts" class="reveal pf-posts">
+    <span class="eyebrow"><span class="lang-en">Physics for everyone</span><span class="lang-es">Física para Todos</span><span class="lang-de">Physik für alle</span><span class="lang-zh">面向所有人的物理</span></span>
+    <div class="pf-section-heading"><img class="pf-section-mark" src="/assets/section-mark-gradient.png?v=1" alt="" aria-hidden="true" /><h2 class="section-title"><span class="lang-en">Read the posts</span><span class="lang-es">Lee los posts</span><span class="lang-de">Beiträge lesen</span><span class="lang-zh">阅读文章</span></h2></div>
+    <p class="section-lead"><span class="lang-en">Short routes into difficult ideas, with a link to the detailed calculations when they are available.</span><span class="lang-es">Rutas breves hacia ideas difíciles, con un enlace a los cálculos detallados cuando están disponibles.</span><span class="lang-de">Kurze Wege zu schwierigen Ideen, mit einem Link zu den detaillierten Berechnungen, sofern vorhanden.</span><span class="lang-zh">用简短的路径进入困难概念，并在有资料时提供详细计算。</span></p>
+    <div class="pf-content-band pf-recent-band">
+      <h3 class="subhead"><span class="lang-en">Recent posts</span><span class="lang-es">Posts recientes</span><span class="lang-de">Neueste Beiträge</span><span class="lang-zh">最新文章</span></h3>
+      <div id="bt" class="pf-post-grid" aria-live="polite"></div>
+      <div id="pf-post-empty" class="empty" hidden><span class="lang-en">There are no recent posts yet.</span><span class="lang-es">Todavía no hay posts recientes.</span><span class="lang-de">Noch keine neuen Beiträge.</span><span class="lang-zh">暂时还没有最新文章。</span></div>
+      <div class="pf-post-cta"><a class="pf-post-more" href="/blog"><span class="pf-post-more-mark" aria-hidden="true">✦</span><span class="lang-en">Read all posts</span><span class="lang-es">Leer todos los posts</span><span class="lang-de">Alle Beiträge lesen</span><span class="lang-zh">阅读全部文章</span><span class="pf-post-more-arrow" aria-hidden="true">&#8594;</span></a></div>
+    </div>
+    <div class="pf-content-band">
+      <h3 class="subhead"><span class="lang-en">Featured posts</span><span class="lang-es">Posts destacados</span><span class="lang-de">Hervorgehobene Beiträge</span><span class="lang-zh">精选文章</span></h3>
+      <div id="bf" class="pf-post-grid pf-featured-grid"></div>
+      <div class="pf-post-cta"><a class="pf-post-more pf-post-more-featured" href="/blog#bf"><span class="pf-post-more-mark" aria-hidden="true">&#9733;</span><span class="lang-en">See all featured posts</span><span class="lang-es">Ver todos los posts destacados</span><span class="lang-de">Alle hervorgehobenen Beiträge</span><span class="lang-zh">查看全部精选文章</span><span class="pf-post-more-arrow" aria-hidden="true">&#8594;</span></a></div>
+    </div>
+  </section>
+
+  <section id="material" class="reveal pf-material">
+    <span class="eyebrow"><span class="lang-en">Study material</span><span class="lang-es">Material de estudio</span><span class="lang-de">Lernmaterial</span><span class="lang-zh">学习资料</span></span>
+    <div class="pf-section-heading"><img class="pf-section-mark" src="/assets/section-mark-gradient.png?v=1" alt="" aria-hidden="true" /><h2 class="section-title"><span class="lang-en">Notes, guides and teaching</span><span class="lang-es">Notas, guías y docencia</span><span class="lang-de">Notizen, Leitfäden und Lehre</span><span class="lang-zh">笔记、指南与教学</span></h2></div>
+    <p class="section-lead"><span class="lang-en">The material is separated from the posts so you can study without losing the route you chose.</span><span class="lang-es">El material está separado de los posts para que puedas estudiar sin perder la ruta que elegiste.</span><span class="lang-de">Das Material ist von den Beiträgen getrennt, damit du beim Lernen deinen gewählten Weg nicht verlierst.</span><span class="lang-zh">资料与文章分开整理，让你学习时不会偏离所选路径。</span></p>
+    <div class="pf-material-grid">
+      <section class="pf-material-group" aria-labelledby="material-notes-title">
+        <span class="pf-group-kicker"><span class="lang-en">Advanced physics</span><span class="lang-es">Física avanzada</span><span class="lang-de">Fortgeschrittene Physik</span><span class="lang-zh">高级物理</span></span>
+        <div class="pf-material-group-title"><h3 id="material-notes-title"><span class="lang-en">Notes and guides</span><span class="lang-es">Notas y guías</span><span class="lang-de">Notizen und Leitfäden</span><span class="lang-zh">笔记与指南</span></h3><a class="pf-material-all-link" href="/material-notes.html"><span class="lang-en">View all</span><span class="lang-es">Ver todos</span><span class="lang-de">Alle ansehen</span><span class="lang-zh">查看全部</span><span aria-hidden="true">&#8594;</span></a></div>
+        <p><span class="lang-en">Derivations and study material for readers who want to go further.</span><span class="lang-es">Derivaciones y material de estudio para quienes quieren profundizar.</span><span class="lang-de">Herleitungen und Lernmaterial für alle, die tiefer einsteigen möchten.</span><span class="lang-zh">适合希望深入学习的读者的推导与学习资料。</span></p>
+        <div id="notes-feed" class="doclist pf-material-feed"></div>
+        <a class="pf-material-more" href="/material-notes.html"><span class="lang-en">View all notes and guides</span><span class="lang-es">Ver todos los apuntes y guías</span><span class="lang-de">Alle Notizen und Leitfäden ansehen</span><span class="lang-zh">查看全部笔记与指南</span><span aria-hidden="true">&#8594;</span></a>
+      </section>
+      <section class="pf-material-group" aria-labelledby="material-teaching-title">
+        <span class="pf-group-kicker"><span class="lang-en">Teaching</span><span class="lang-es">Docencia</span><span class="lang-de">Lehre</span><span class="lang-zh">教学</span></span>
+        <div class="pf-material-group-title"><h3 id="material-teaching-title"><span class="lang-en">Tutorials and classes</span><span class="lang-es">Ayudantías y clases</span><span class="lang-de">Übungen und Lehrveranstaltungen</span><span class="lang-zh">习题课与课程</span></h3><a class="pf-material-all-link" href="/material-teaching.html"><span class="lang-en">View all</span><span class="lang-es">Ver todos</span><span class="lang-de">Alle ansehen</span><span class="lang-zh">查看全部</span><span aria-hidden="true">&#8594;</span></a></div>
+        <p><span class="lang-en">Problem sets and supporting material from teaching and tutorials.</span><span class="lang-es">Problemas y material de apoyo de clases y ayudantías.</span><span class="lang-de">Aufgaben und Begleitmaterial aus Lehrveranstaltungen und Übungen.</span><span class="lang-zh">课程与习题课中的问题集和辅助资料。</span></p>
+        <div id="teaching-feed" class="doclist pf-material-feed"></div>
+        <a class="pf-material-more" href="/material-teaching.html"><span class="lang-en">View all tutorials and classes</span><span class="lang-es">Ver todas las ayudantías y clases</span><span class="lang-de">Alle Übungen und Lehrveranstaltungen ansehen</span><span class="lang-zh">查看全部习题课与课程</span><span aria-hidden="true">&#8594;</span></a>
+      </section>
+    </div>
+  </section>
+
+  <section id="about" class="reveal pf-about" aria-labelledby="pf-about-title">
+    <span class="eyebrow"><span class="lang-en">ABOUT THIS SPACE</span><span class="lang-es">SOBRE ESTE ESPACIO</span><span class="lang-de">ÜBER DIESEN RAUM</span><span class="lang-zh">关于这个空间</span></span>
+    <div class="pf-section-heading"><img class="pf-section-mark" src="/assets/section-mark-gradient.png?v=1" alt="" aria-hidden="true" /><h2 id="pf-about-title" class="section-title"><span class="lang-en">A separate space for public physics</span><span class="lang-es">Un espacio para la física pública</span><span class="lang-de">Ein eigener Raum für öffentliche Physik</span><span class="lang-zh">一个面向公众的物理空间</span></h2></div>
+    <div class="pf-about-grid">
+      <article class="pf-about-card">
+        <span class="pf-about-kicker"><span class="lang-en">WHAT IT IS</span><span class="lang-es">QUÉ ES</span><span class="lang-de">WAS ES IST</span><span class="lang-zh">这是什么</span></span>
+        <h3><span class="lang-en">Physics with context</span><span class="lang-es">Física con contexto</span><span class="lang-de">Physik mit Kontext</span><span class="lang-zh">有背景的物理</span></h3>
+        <p><span class="lang-en">Primo Físico brings together outreach posts, lecture notes, study guides and advanced material. The goal is to make complex concepts intuitive and provide a way into difficult physics.</span><span class="lang-es">Primo Físico reúne posts de divulgación, apuntes, guías de estudio y material avanzado. La idea es volver intuitivos los conceptos complejos y facilitar el acercamiento a la física difícil.</span><span class="lang-de">Primo Físico verbindet Beiträge zur Wissenschaftsvermittlung, Vorlesungsnotizen, Lernleitfäden und fortgeschrittenes Material. Ziel ist es, komplexe Konzepte intuitiv zu machen und einen Zugang zu anspruchsvoller Physik zu eröffnen.</span><span class="lang-zh">Primo Físico 汇集科普文章、讲义、学习指南和高级材料，希望让复杂概念变得直观，为理解困难的物理内容提供入口。</span></p>
+      </article>
+      <article class="pf-about-card">
+        <span class="pf-about-kicker"><span class="lang-en">WHO IT IS FOR</span><span class="lang-es">A QUIÉN ESTÁ DIRIGIDO</span><span class="lang-de">FÜR WEN ES GEDACHT IST</span><span class="lang-zh">面向谁</span></span>
+        <h3><span class="lang-en">Curious readers and learners</span><span class="lang-es">Personas curiosas y estudiantes</span><span class="lang-de">Neugierige Leser und Lernende</span><span class="lang-zh">好奇的读者与学习者</span></h3>
+        <p><span class="lang-en">It is for curious readers, students and anyone learning physics who wants a clear entry point, with the calculations behind the explanation when they are useful.</span><span class="lang-es">Está pensado para personas curiosas, estudiantes y quienes estén aprendiendo física y quieran una entrada clara, junto con los cálculos cuando sean necesarios.</span><span class="lang-de">Gedacht ist es für neugierige Leser, Studierende und alle, die Physik lernen und einen klaren Einstieg sowie bei Bedarf die Rechnungen hinter der Erklärung suchen.</span><span class="lang-zh">它面向好奇的读者、学生以及正在学习物理、希望获得清晰入口并在需要时查看背后计算的人。</span></p>
+      </article>
+      <article class="pf-about-card pf-about-owner" data-profile-url="https://www.castorene.cl/" role="link" tabindex="0">
+        <span class="pf-about-kicker"><span class="lang-en">WHO RUNS IT</span><span class="lang-es">QUIÉN LO MANTIENE</span><span class="lang-de">WER ES BETREIBT</span><span class="lang-zh">由谁维护</span></span>
+        <h3><span class="lang-en">A personal physics project</span><span class="lang-es">Un proyecto personal de física</span><span class="lang-de">Ein persönliches Physikprojekt</span><span class="lang-zh">一个个人物理项目</span></h3>
+        <p><span class="lang-en">The site is created and maintained by Bastian Castorene, PhD (c), a physicist and doctoral student in Chile. His papers, academic profile and CV remain on his personal site: <a href="https://www.castorene.cl/" target="_blank" rel="noopener">www.castorene.cl</a>.</span><span class="lang-es">El sitio es creado y mantenido por Bastian Castorene, PhD (c), físico y doctorando en Chile. Sus papers, perfil académico y CV permanecen en su página personal: <a href="https://www.castorene.cl/" target="_blank" rel="noopener">www.castorene.cl</a>.</span><span class="lang-de">Die Website wird von Bastian Castorene, PhD (c), einem Physiker und Doktoranden in Chile, erstellt und gepflegt. Seine Papers, sein akademisches Profil und sein Lebenslauf bleiben auf seiner persönlichen Website: <a href="https://www.castorene.cl/" target="_blank" rel="noopener">www.castorene.cl</a>.</span><span class="lang-zh">本网站由智利物理学家、博士生 Bastian Castorene（PhD (c)）创建并维护。他的论文、学术简介和简历保留在个人网站：<a href="https://www.castorene.cl/" target="_blank" rel="noopener">www.castorene.cl</a>。</span></p>
+        <a class="btn btn-primary pf-about-site-btn" href="https://www.castorene.cl/" target="_blank" rel="noopener"><span class="lang-en">Visit www.castorene.cl</span><span class="lang-es">Visita www.castorene.cl</span><span class="lang-de">www.castorene.cl besuchen</span><span class="lang-zh">访问 www.castorene.cl</span><span aria-hidden="true">&#8599;</span></a>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><span class="lang-en">Primo Físico · Physics notes and explanations</span><span class="lang-es">Primo Físico · Notas y explicaciones de física</span><span class="lang-de">Primo Físico · Physiknotizen und Erklärungen</span><span class="lang-zh">Primo Físico · 物理笔记与解读</span></p>
+  <p style="margin-top:6px"><a href="https://www.castorene.cl/" target="_blank" rel="noopener">Bastian Castorene</a> · <span id="yr"></span></p>
+</footer>
+
+<script src="/posts.js"></script>
+<script src="/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2"></script>
+<script src="/primo-fisico.js?v=20"></script>
+</body>
+</html>
