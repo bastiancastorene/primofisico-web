@@ -221,6 +221,8 @@ html[data-theme="light"] .pf-about-owner:hover{box-shadow:0 18px 50px -24px rgba
 #material .dochead{padding:14px 15px}
 #material .doctitle{font-size:.9rem;line-height:1.35}
 #material .docdate{font-size:.72rem}
+.docformat{display:inline-flex;align-items:center;flex:none;min-width:0;padding:5px 9px;border:1px solid rgba(217,70,239,.36);border-radius:999px;background:rgba(124,58,237,.12);color:var(--accent);font-size:.64rem;font-weight:800;letter-spacing:.35px;line-height:1.1;white-space:nowrap}
+html[data-theme="light"] .docformat{border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.08);color:var(--v1)}
 #material .material-actions{padding-inline:15px}
 #material .material-discussion{padding-inline:15px}
 /* En la portada se mantienen las reacciones y compartir; la discusión queda
@@ -566,7 +568,7 @@ html[data-theme="light"] .pf-material-group{background:none}
 #material .pf-material-feed>.pf-material-card .docbody{display:flex;flex-direction:column;height:100%;padding:0;gap:0;opacity:1;transform:none;transition:none}
 #material .pf-material-feed>.pf-material-card .docthumb{display:none}
 #material .pf-material-feed>.pf-material-card .docsum{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr) auto;gap:10px;width:100%;height:100%}
-#material .pf-material-feed>.pf-material-card .docsum p{grid-column:1/-1;align-self:start;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;margin:0;color:var(--muted);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.65}
+#material .pf-material-feed>.pf-material-card .docsum p{grid-column:1/-1;align-self:start;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;margin:0;color:var(--muted);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.65}
 #material .pf-material-feed>.pf-material-card .docopen{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;min-height:clamp(52px,5vw,66px);margin:0!important;padding:10px 12px;border:1px solid rgba(217,70,239,.45);border-radius:999px;background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3));color:#fff;font-size:clamp(.72rem,1.15vw,.96rem);font-weight:800;line-height:1.18;text-align:center;box-sizing:border-box;box-shadow:0 14px 30px -18px rgba(217,70,239,.92);transition:transform .2s ease,box-shadow .25s ease}
 #material .pf-material-feed>.pf-material-card .docopen:hover{transform:translateY(-2px);box-shadow:0 18px 36px -18px rgba(217,70,239,.98)}
 #material .pf-material-feed>.pf-material-card .docopen:not(.alt){grid-column:1}
