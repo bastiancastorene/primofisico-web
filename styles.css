@@ -839,6 +839,7 @@ html[data-theme="light"] .material-actions{background:rgba(124,58,237,.02)}
 .pdf-spark.spark-2{stroke:var(--v2);stroke-width:2;opacity:.55;animation-delay:-.10s}.pdf-spark.spark-3{stroke:var(--v1);stroke-width:1.6;opacity:.3;animation-delay:-.20s}
 @keyframes pdf-spark-lap{to{stroke-dashoffset:100}}
 .share-wrap{position:relative}.share-menu{position:absolute;z-index:80;right:0;top:calc(100% + 9px);display:none;width:210px;padding:8px;border:1px solid var(--panel-brd);border-radius:14px;background:rgba(18,10,36,.97);box-shadow:0 18px 45px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+.share-menu.share-menu-portal{position:fixed;z-index:1400;left:0;right:auto;top:0;margin:0;width:min(210px,calc(100vw - 24px));box-sizing:border-box}
 .share-menu.open{display:grid}.share-menu a,.share-menu button{display:flex;align-items:center;width:100%;padding:10px;border:0;border-radius:9px;background:transparent;color:var(--txt);font:600 .8rem/1.2 system-ui,sans-serif;text-decoration:none;cursor:pointer}.share-menu a:hover,.share-menu button:hover{background:rgba(124,58,237,.16)}
 html[data-theme="light"] .share-menu{background:rgba(255,255,255,.98);box-shadow:0 18px 42px rgba(62,42,100,.18)}
 .discussion-prompt{margin:24px 0 20px;padding:16px 17px;border-left:3px solid var(--v2);border-radius:0 12px 12px 0;background:rgba(124,58,237,.07);color:var(--muted);line-height:1.65}.discussion-prompt b{color:var(--txt)}
