@@ -458,6 +458,11 @@ html[data-theme="light"] .dochead:hover .doctitle{color:var(--v3)}
 .docopen{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;
   background:linear-gradient(100deg,var(--v1),var(--v2));color:#fff;font-weight:600;font-size:.85rem;
   box-shadow:0 10px 26px -12px rgba(217,70,239,.65);transition:transform .18s ease, box-shadow .25s ease}
+.docopen .lang-en,.docopen .lang-es,.docopen .lang-de,.docopen .lang-zh{min-width:0;text-align:center}
+.doc-action-arrow{flex:0 0 auto;color:rgba(255,255,255,.94);font-size:1.12em;line-height:1;transition:transform .2s ease,text-shadow .2s ease}
+.docopen:hover .doc-action-arrow{transform:translateX(3px);text-shadow:0 0 8px rgba(255,255,255,.82)}
+.docopen.alt .doc-action-arrow{color:var(--accent)}
+.docopen.alt:hover .doc-action-arrow{transform:translateX(-3px)}
 .docopen:hover{transform:translateY(-2px);box-shadow:0 14px 32px -12px rgba(217,70,239,.85)}
 .docopen:active{transform:scale(.95)}
 .dochint{display:block;margin-top:10px;font-size:.76rem;color:var(--muted);opacity:.75}
@@ -814,6 +819,8 @@ html[data-theme="light"] .material-actions{background:rgba(124,58,237,.02)}
 .action-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 13px;border:1px solid var(--panel-brd);border-radius:999px;
   background:rgba(255,255,255,.035);color:var(--txt);font:700 .78rem/1.2 system-ui,sans-serif;text-decoration:none;cursor:pointer;
   transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.preview-actions.pf-pressing,.material-actions.pf-pressing{filter:drop-shadow(0 0 13px rgba(217,70,239,.42))}
+.preview-actions .pf-pressing,.material-actions .pf-pressing{transform:scale(1.045);border-color:rgba(217,70,239,.78);box-shadow:0 12px 30px -12px rgba(217,70,239,.96);z-index:4}
 .action-btn:hover{transform:translateY(-1px);border-color:rgba(168,120,255,.48);background:rgba(124,58,237,.11)}
 .action-btn:focus-visible{outline:3px solid rgba(217,70,239,.28);outline-offset:3px}
 .action-btn svg:not(.pdf-sparks){width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

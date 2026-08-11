@@ -31,6 +31,7 @@
 
   function decorate(item,index){
     item.classList.add('pf-material-archive-item');
+    if(window.pfNormalizeDocActions)window.pfNormalizeDocActions(item);
     if(isNotes){var variant=noteVariant(item);item.dataset.pfNoteVariant=variant;item.classList.add('pf-note-'+variant);}
     var num=item.querySelector('.docnum');
     if(num)num.textContent=String(index+1).padStart(2,'0');

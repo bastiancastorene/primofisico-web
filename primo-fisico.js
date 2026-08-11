@@ -137,6 +137,7 @@
     item.dataset.kind=kind;
     item.dataset.sort=String(dateValue((item.querySelector('.docdate')||{}).textContent)+(100-order));
     var num=item.querySelector('.docnum');if(num)num.textContent=String(number).padStart(2,'0');
+    if(window.pfNormalizeDocActions)window.pfNormalizeDocActions(item);
     var head=item.querySelector('.dochead');
     if(!head)return;
     if(item.dataset.pfPreview==='true'){
@@ -373,6 +374,7 @@
       if(event&&target.releasePointerCapture&&target.hasPointerCapture&&target.hasPointerCapture(event.pointerId))target.releasePointerCapture(event.pointerId);
     }
     target.addEventListener('pointerdown',function(event){
+      if(event.pointerType==='touch')return;
       if(event.pointerType==='mouse'&&event.button!==0)return;
       panelDrag.active=true;panelDrag.axis=null;panelDrag.suppressClick=false;panelDrag.startX=event.clientX;panelDrag.startY=event.clientY;panelDrag.startScroll=target.scrollLeft;
     });
@@ -606,6 +608,31 @@
   setupSearchDrawer();
   var posts=(window.PRIMO_POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
   fetchMaterials().then(function(materials){render(posts,materials);}).catch(function(){render(posts,[]);});
+})();
+
+/* iOS-like pressed state for the interaction controls. It is delegated so it
+   also covers cards injected later by blog-interactions.js. */
+(function(){
+  var selector='.preview-actions .action-btn,.preview-actions .plink,.material-actions .action-btn,.material-actions .docopen,.pf-notes-cta';
+  var pressed=null,pressedBox=null;
+  function clear(){
+    if(pressed)pressed.classList.remove('pf-pressing');
+    if(pressedBox)pressedBox.classList.remove('pf-pressing');
+    pressed=null;pressedBox=null;
+  }
+  document.addEventListener('pointerdown',function(event){
+    if(event.pointerType==='mouse'&&event.button!==0)return;
+    var control=event.target.closest&&event.target.closest(selector);
+    if(!control)return;
+    clear();
+    pressed=control;
+    pressedBox=control.closest('.preview-actions,.material-actions');
+    control.classList.add('pf-pressing');
+    if(pressedBox)pressedBox.classList.add('pf-pressing');
+  },true);
+  document.addEventListener('pointerup',clear,true);
+  document.addEventListener('pointercancel',clear,true);
+  window.addEventListener('blur',clear);
 })();
 
 /* Evita el rebote superior del navegador móvil, que desplaza visualmente el
