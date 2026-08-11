@@ -1,8 +1,9 @@
 /* Prototipo local de Primo Físico. No modifica los estilos compartidos del sitio académico. */
 html,body{overscroll-behavior-y:none}
-/* En escritorio la escala base queda al nivel del primer aumento del navegador;
-   el móvil conserva la escala original para no alterar su composición. */
-@media(min-width:761px){html{font-size:110%}}
+/* La portada conserva la escala base en escritorio para que las tarjetas y sus
+   acciones no crezcan por encima del ancho disponible. El móvil mantiene sus
+   reglas propias de composición. */
+@media(min-width:761px){html{font-size:100%}}
 #top{scroll-margin-top:64px}
 .pf-about-trigger{--pf-about-glow:rgba(217,70,239,.84);--pf-about-sheen:rgba(255,255,255,.92)}
 html[data-theme="light"] .pf-about-trigger{--pf-about-glow:rgba(124,58,237,.72);--pf-about-sheen:rgba(124,58,237,.42)}
@@ -35,6 +36,15 @@ html[data-theme="light"] .nav-links .nav-search-toggle:hover,html[data-theme="li
 .pf-tagline{max-width:23ch;color:var(--txt);font:600 clamp(1.25rem,3vw,1.9rem)/1.25 Georgia,"Times New Roman",serif}
 .pf-lead{max-width:60ch;margin-top:20px;color:var(--muted);font-size:clamp(1rem,2vw,1.16rem)}
 .pf-hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pf-notes-cta{position:relative;isolation:isolate;overflow:hidden;border-color:rgba(217,70,239,.54);background:linear-gradient(135deg,rgba(124,58,237,.22),rgba(217,70,239,.13) 55%,rgba(79,70,229,.24));color:var(--txt);box-shadow:0 12px 30px -18px rgba(217,70,239,.9);padding-left:44px;padding-right:44px;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.pf-notes-cta::before{content:"✦";position:absolute;left:17px;top:50%;transform:translateY(-50%);color:#f5b8ff;text-shadow:0 0 10px rgba(217,70,239,.9);font-size:1rem;pointer-events:none}
+.pf-notes-cta::after{content:"→";position:absolute;right:17px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:1.12rem;transition:transform .22s ease,text-shadow .22s ease;pointer-events:none}
+.pf-notes-cta:hover{border-color:var(--accent);background:linear-gradient(135deg,rgba(124,58,237,.36),rgba(217,70,239,.22),rgba(79,70,229,.36));box-shadow:0 18px 38px -18px rgba(217,70,239,1);transform:translateY(-2px)}
+.pf-notes-cta:hover::after{transform:translate(4px,-50%);text-shadow:0 0 8px rgba(255,255,255,.85)}
+.pf-notes-cta.pf-pressing{transform:scale(1.035);border-color:rgba(217,70,239,.82);box-shadow:0 14px 32px -16px rgba(217,70,239,1),0 0 18px rgba(217,70,239,.38)}
+html[data-theme="light"] .pf-notes-cta{background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(217,70,239,.09),rgba(79,70,229,.14));color:var(--v1);border-color:rgba(124,58,237,.4);box-shadow:0 14px 32px -20px rgba(79,70,229,.55)}
+html[data-theme="light"] .pf-notes-cta::after{color:var(--v1)}
+@media(max-width:560px){.pf-notes-cta{width:100%;justify-content:center}}
 .pf-hero-orbit{justify-self:center;position:relative;width:min(330px,46vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 42% 36%,rgba(217,70,239,.22),transparent 30%),radial-gradient(circle,rgba(124,58,237,.16),rgba(18,10,36,.08) 62%,transparent 63%);filter:drop-shadow(0 24px 46px rgba(124,58,237,.28));cursor:pointer;text-decoration:none}
 .pf-hero-orbit:focus-visible{outline:3px solid var(--accent);outline-offset:6px}
 .pf-hero-orbit.pf-about-pulse .pf-orbit-core{animation:pf-about-core-glow .88s ease-out both}
@@ -140,7 +150,7 @@ html[data-theme="light"] .pf-route-icon{background:rgba(255,255,255,.55)}
 html[data-theme="light"] .pf-post-more{border-color:rgba(124,58,237,.42);box-shadow:0 16px 34px -17px rgba(79,70,229,.55)}
 html[data-theme="light"] .pf-post-more::before{background:rgba(255,255,255,.7)}
 html[data-theme="light"] .pf-post-more:hover{box-shadow:0 20px 40px -16px rgba(79,70,229,.7)}
-.pf-post-grid{display:flex;gap:18px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:none;scroll-behavior:auto;scrollbar-width:none;touch-action:pan-y;cursor:grab;padding:4px 2px 14px;margin-inline:-2px}
+.pf-post-grid{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:none;scroll-behavior:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;cursor:grab;padding:4px 2px 14px;margin-inline:-2px}
 .pf-post-grid::-webkit-scrollbar{display:none}
 .pf-post-grid>.pf-post-card{flex:0 0 100%;scroll-snap-align:start}
 .pf-post-card{display:flex;flex-direction:column;min-width:0}
@@ -199,7 +209,7 @@ html[data-theme="light"] .pf-about-owner:hover{box-shadow:0 18px 50px -24px rgba
 .pf-material-more>span:last-child{transition:transform .2s ease}
 .pf-material-more:hover>span:last-child{transform:translateX(4px)}
 .pf-material-group>p{color:var(--muted);line-height:1.55}
-.pf-material-feed{display:flex;flex-direction:row;gap:10px;width:100%;min-width:0;box-sizing:border-box;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:none;scroll-behavior:auto;scrollbar-width:none;touch-action:pan-y;cursor:grab;margin-top:24px;padding:4px 2px 12px;margin-inline:-2px}
+.pf-material-feed{display:flex;flex-direction:row;gap:10px;width:100%;min-width:0;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:none;scroll-behavior:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;cursor:grab;margin-top:24px;padding:4px 2px 12px;margin-inline:-2px}
 .pf-post-grid.is-dragging,.pf-material-feed.is-dragging{cursor:grabbing;user-select:none}
 .pf-material-feed::-webkit-scrollbar{display:none}
 .pf-material-feed>.docitem{flex:0 0 100%;min-width:0;scroll-snap-align:start}
@@ -208,10 +218,33 @@ html[data-theme="light"] .pf-about-owner:hover{box-shadow:0 18px 50px -24px rgba
 .pf-material-archive-item{scroll-margin-top:86px}
 .pf-archive-status{max-width:920px;margin:24px auto 0}
 .pf-archive-status[hidden]{display:none!important}
+.pf-material-index{position:relative;top:auto;z-index:auto;display:block;max-width:920px;margin:32px auto 0;padding:22px 24px;border:1px solid rgba(168,120,255,.24);border-radius:24px;background:linear-gradient(145deg,rgba(124,58,237,.12),rgba(255,255,255,.025) 58%,rgba(79,70,229,.1));box-shadow:0 18px 42px -30px rgba(217,70,239,.65)}
+.pf-material-index h2{margin:8px 0 0;font-size:clamp(1.45rem,3vw,2rem)}
+.pf-material-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.pf-material-index-card{position:relative;display:flex;align-items:center;gap:11px;min-width:0;padding:14px 15px;border:1px solid rgba(168,120,255,.22);border-radius:16px;background:rgba(18,10,36,.42);color:var(--txt);text-decoration:none;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.pf-material-index-card::before{content:"";position:absolute;left:0;right:24%;top:0;height:2px;background:linear-gradient(90deg,var(--v1),var(--v2),transparent);opacity:.72}
+.pf-material-index-card:hover{transform:translateY(-3px);border-color:rgba(217,70,239,.62);background:rgba(124,58,237,.16);box-shadow:0 16px 28px -20px rgba(217,70,239,.9)}
+.pf-material-folder{position:relative;display:block;flex:none;width:28px;height:21px;border:1px solid rgba(217,70,239,.65);border-radius:5px;background:linear-gradient(135deg,rgba(124,58,237,.7),rgba(217,70,239,.42));box-shadow:0 7px 16px -10px rgba(217,70,239,.9)}
+.pf-material-folder::before{content:"";position:absolute;left:2px;top:-5px;width:12px;height:5px;border:1px solid rgba(217,70,239,.65);border-bottom:0;border-radius:4px 4px 0 0;background:rgba(124,58,237,.72)}
+.pf-material-index-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.pf-material-index-copy strong{font-size:.78rem;line-height:1.2}
+.pf-material-index-copy small{color:var(--muted);font-size:.66rem;line-height:1.2}
+.pf-material-index-arrow{flex:none;margin-left:auto;color:var(--accent);font-size:1.05rem;transition:transform .22s ease}
+.pf-material-index-card:hover .pf-material-index-arrow{transform:translateX(3px)}
+.pf-material-topic{max-width:920px;margin:58px auto 0;scroll-margin-top:92px}
+.pf-material-topic:first-child{margin-top:36px}
+.pf-material-topic-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;border-bottom:1px solid rgba(168,120,255,.2)}
+.pf-material-topic-heading h2{margin:8px 0 0;font-size:clamp(1.55rem,3.2vw,2.2rem)}
+.pf-material-topic-lead{max-width:58ch;margin:10px 0 0;color:var(--muted);line-height:1.55}
+.pf-material-topic-count{flex:none;padding:7px 11px;border:1px solid rgba(217,70,239,.32);border-radius:999px;background:rgba(124,58,237,.1);color:var(--accent);font-size:.68rem;font-weight:800;white-space:nowrap}
+.pf-material-topic-feed{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.pf-material-topic-feed .docitem{min-width:0}
 #material .docitem{background:rgba(255,255,255,.025)}
 #material .dochead{padding:14px 15px}
 #material .doctitle{font-size:.9rem;line-height:1.35}
 #material .docdate{font-size:.72rem}
+.docformat{display:inline-flex;align-items:center;flex:none;min-width:0;padding:5px 9px;border:1px solid rgba(217,70,239,.36);border-radius:999px;background:rgba(124,58,237,.12);color:var(--accent);font-size:.64rem;font-weight:800;letter-spacing:.35px;line-height:1.1;white-space:nowrap}
+html[data-theme="light"] .docformat{border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.08);color:var(--v1)}
 #material .material-actions{padding-inline:15px}
 #material .material-discussion{padding-inline:15px}
 /* En la portada se mantienen las reacciones y compartir; la discusión queda
@@ -227,6 +260,10 @@ html[data-theme="light"] .pf-about-owner:hover{box-shadow:0 18px 50px -24px rgba
 .pf-material-archive-feed .docsum{width:100%}
 html[data-theme="light"] .pf-material-group{background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(124,58,237,.07))}
 html[data-theme="light"] #material .docitem{background:rgba(255,255,255,.72)}
+html[data-theme="light"] .pf-material-index{background:linear-gradient(145deg,rgba(124,58,237,.08),rgba(255,255,255,.84) 58%,rgba(79,70,229,.07));box-shadow:0 18px 42px -30px rgba(79,70,229,.35)}
+html[data-theme="light"] .pf-material-index-card{background:rgba(255,255,255,.58);color:var(--v1)}
+html[data-theme="light"] .pf-material-index-card:hover{background:rgba(124,58,237,.1);box-shadow:0 16px 28px -20px rgba(79,70,229,.45)}
+html[data-theme="light"] .pf-material-topic-count{background:rgba(124,58,237,.07);color:var(--v1)}
 html[data-theme="light"] .pf-material-more{border-color:rgba(124,58,237,.32);background:linear-gradient(100deg,rgba(124,58,237,.13),rgba(217,70,239,.1),rgba(79,70,229,.12));color:var(--v1);box-shadow:0 12px 28px -18px rgba(79,70,229,.4)}
 html[data-theme="light"] .pf-material-more:hover{border-color:var(--v1);background:linear-gradient(100deg,rgba(124,58,237,.21),rgba(217,70,239,.16),rgba(79,70,229,.2));box-shadow:0 16px 32px -17px rgba(79,70,229,.52)}
 @media(max-width:900px){
@@ -243,6 +280,17 @@ html[data-theme="light"] .pf-material-more:hover{border-color:var(--v1);backgrou
   .pf-material-group-title{gap:8px}
   .pf-material-all-link{font-size:.7rem}
   .pf-material-archive-item{scroll-margin-top:72px}
+  .pf-material-index{margin-top:24px;padding:20px 16px;border-radius:20px}
+  .pf-material-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .pf-material-index-card{padding:12px 11px;gap:8px}
+  .pf-material-index-copy strong{font-size:.72rem}
+  .pf-material-index-copy small{font-size:.62rem}
+  .pf-material-topic{margin-top:44px;scroll-margin-top:76px}
+  .pf-material-topic:first-child{margin-top:28px}
+  .pf-material-topic-heading{align-items:flex-start;gap:12px}
+  .pf-material-topic-heading h2{font-size:clamp(1.4rem,7vw,1.85rem)}
+  .pf-material-topic-lead{font-size:.9rem}
+  .pf-material-topic-count{margin-top:22px}
   #material .pf-material-feed .docthumb,
   .pf-material-archive-feed .docthumb{width:88px;height:124px;object-fit:cover;object-position:center top}
 }
@@ -557,7 +605,7 @@ html[data-theme="light"] .pf-material-group{background:none}
 #material .pf-material-feed>.pf-material-card .docbody{display:flex;flex-direction:column;height:100%;padding:0;gap:0;opacity:1;transform:none;transition:none}
 #material .pf-material-feed>.pf-material-card .docthumb{display:none}
 #material .pf-material-feed>.pf-material-card .docsum{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr) auto;gap:10px;width:100%;height:100%}
-#material .pf-material-feed>.pf-material-card .docsum p{grid-column:1/-1;align-self:start;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;margin:0;color:var(--muted);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.65}
+#material .pf-material-feed>.pf-material-card .docsum p{grid-column:1/-1;align-self:start;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;margin:0;color:var(--muted);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.65}
 #material .pf-material-feed>.pf-material-card .docopen{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;min-height:clamp(52px,5vw,66px);margin:0!important;padding:10px 12px;border:1px solid rgba(217,70,239,.45);border-radius:999px;background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3));color:#fff;font-size:clamp(.72rem,1.15vw,.96rem);font-weight:800;line-height:1.18;text-align:center;box-sizing:border-box;box-shadow:0 14px 30px -18px rgba(217,70,239,.92);transition:transform .2s ease,box-shadow .25s ease}
 #material .pf-material-feed>.pf-material-card .docopen:hover{transform:translateY(-2px);box-shadow:0 18px 36px -18px rgba(217,70,239,.98)}
 #material .pf-material-feed>.pf-material-card .docopen:not(.alt){grid-column:1}
@@ -581,4 +629,89 @@ html[data-theme="light"] #material .pf-material-feed>.pf-material-card:hover{bor
 @media(max-width:340px){
   #material .pf-material-feed>.pf-material-card{padding-inline:16px}
   #material .pf-material-feed>.pf-material-card .docopen{font-size:.76rem}
+}
+
+/* ---- escala compacta de escritorio ----
+   En una ventana MacBook Pro de 1280 px caben tres tarjetas; los controles
+   conservan dos filas, pero no deben dominar el contenido ni forzar overflow. */
+@media(min-width:761px){
+  .btn{padding:10px 20px;font-size:.88rem}
+  .qlink{padding:9px 17px 9px 14px;font-size:.84rem}
+  .pf-notes-cta{padding-left:32px;padding-right:32px}
+  .pf-notes-cta::before{left:13px}
+  .pf-notes-cta::after{right:13px}
+  .pf-post-more{min-width:min(100%,260px);padding:10px 18px;font-size:.8rem}
+  .pf-material-more{padding:10px 15px;font-size:.8rem}
+  .action-btn{min-height:38px;padding:7px 10px;font-size:.72rem}
+  .action-btn svg:not(.pdf-sparks){width:17px;height:17px}
+  .docopen{padding:8px 16px;font-size:.8rem}
+
+  .pf-post-card{
+    min-height:clamp(420px,34vw,500px);
+    padding:clamp(20px,1.8vw,26px) clamp(18px,1.8vw,26px) clamp(20px,1.7vw,26px);
+    border-radius:24px;
+  }
+  .pf-post-card .pmeta{margin-bottom:clamp(14px,1.6vw,20px)}
+  .pf-post-card h3{margin-bottom:clamp(12px,1.6vw,20px);font-size:clamp(1.18rem,1.85vw,1.6rem)}
+  .pf-post-card>p{font-size:clamp(.9rem,1vw,1.05rem);line-height:1.52}
+  .pf-post-card .preview-actions{gap:8px!important;padding-top:14px}
+  .pf-post-card .preview-actions>.plink,
+  .pf-post-card .preview-actions>.pdf-tech,
+  .pf-post-card .preview-actions>.pdf-links>.pdf-tech{
+    min-height:clamp(48px,3.2vw,50px);
+    padding:6px 8px;
+    font-size:clamp(.65rem,.85vw,.8rem);
+    line-height:1.12;
+  }
+  .pf-post-card .preview-actions>.pdf-tech,
+  .pf-post-card .preview-actions>.pdf-links>.pdf-tech{gap:3px}
+  .pf-post-card .preview-actions .pdf-arrow{font-size:.78rem;line-height:1}
+  .pf-post-card .preview-actions>.reaction-pair{gap:6px}
+  .pf-post-card .preview-actions>.reaction-pair>.action-btn,
+  .pf-post-card .preview-actions>.share-wrap>.action-btn{
+    min-height:40px;
+    padding:6px 8px;
+    font-size:clamp(.64rem,.78vw,.76rem);
+  }
+  .pf-post-card .preview-actions .action-btn svg:not(.pdf-sparks){width:17px;height:17px}
+
+  #bt .pf-post-card .preview-actions>.plink,
+  #bf .pf-post-card .preview-actions>.plink,
+  #bt .pf-post-card .preview-actions>.pdf-tech,
+  #bf .pf-post-card .preview-actions>.pdf-tech,
+  #bt .pf-post-card .preview-actions>.pdf-links>.pdf-tech,
+  #bf .pf-post-card .preview-actions>.pdf-links>.pdf-tech{
+    min-height:clamp(48px,3.2vw,50px)!important;
+    padding:6px 8px!important;
+    font-size:clamp(.65rem,.85vw,.8rem)!important;
+    line-height:1.12!important;
+  }
+  #bt .pf-post-card .preview-actions .pdf-arrow,
+  #bf .pf-post-card .preview-actions .pdf-arrow{font-size:.78rem;line-height:1}
+  #bt .pf-post-card .preview-actions>.reaction-pair>.action-btn,
+  #bf .pf-post-card .preview-actions>.reaction-pair>.action-btn,
+  #bt .pf-post-card .preview-actions>.share-wrap>.action-btn,
+  #bf .pf-post-card .preview-actions>.share-wrap>.action-btn{
+    min-height:40px!important;
+    padding:6px 8px!important;
+    font-size:clamp(.64rem,.78vw,.76rem)!important;
+  }
+
+  #material .pf-material-feed>.pf-material-card{
+    height:clamp(420px,34vw,500px);
+    padding:clamp(20px,1.8vw,26px) clamp(18px,1.8vw,26px) clamp(20px,1.7vw,26px);
+    border-radius:24px;
+  }
+  #material .pf-material-feed>.pf-material-card>.dochead{margin-bottom:clamp(14px,1.6vw,20px)}
+  #material .pf-material-feed>.pf-material-card .doctitle{font-size:clamp(1.18rem,1.85vw,1.6rem)}
+  #material .pf-material-feed>.pf-material-card .docsum p{font-size:clamp(.9rem,1vw,1.05rem);line-height:1.52}
+  #material .pf-material-feed>.pf-material-card .docopen{
+    min-height:clamp(48px,3.2vw,50px);
+    padding:7px 9px;
+    font-size:clamp(.65rem,.85vw,.8rem);
+    line-height:1.12;
+  }
+  #material .pf-material-feed>.pf-material-card>.material-actions{gap:6px;margin-top:14px;padding-top:10px}
+  #material .pf-material-feed>.pf-material-card>.material-actions .reaction-pair{gap:6px}
+  #material .pf-material-feed>.pf-material-card>.material-actions .action-btn{min-height:40px;padding:6px 8px;font-size:clamp(.64rem,.78vw,.76rem)}
 }

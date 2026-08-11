@@ -36,6 +36,26 @@ function toggleLangMenu(btn){
   var open=m.classList.toggle('open');
   btn.setAttribute('aria-expanded', open?'true':'false');
 }
+
+/* Keep material-action arrows independent from translated labels. The old
+   inline arrows could wrap to a different line in Spanish and German when a
+   card became narrow. */
+function pfNormalizeDocActions(root){
+  var scope=root&&root.querySelectorAll?root:document;
+  scope.querySelectorAll('.docopen').forEach(function(link){
+    if(link.querySelector('.doc-action-arrow'))return;
+    link.querySelectorAll('.lang-en,.lang-es,.lang-de,.lang-zh').forEach(function(label){
+      label.textContent=String(label.textContent||'').replace(/\s*→\s*$/,'');
+    });
+    var arrow=document.createElement('span');
+    arrow.className='doc-action-arrow';
+    arrow.setAttribute('aria-hidden','true');
+    arrow.textContent=link.classList.contains('alt')?'←':'→';
+    link.appendChild(arrow);
+  });
+}
+window.pfNormalizeDocActions=pfNormalizeDocActions;
+pfNormalizeDocActions(document);
 document.addEventListener('click',function(e){
   if(!e.target.closest('.lang-dd')){var m=document.querySelector('.lang-menu'); if(m)m.classList.remove('open');}
 });
