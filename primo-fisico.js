@@ -7,6 +7,7 @@
     specialized:{en:'Specialized',es:'Especializado',de:'Spezial',zh:'专业'}
   };
   var DOUBLE_LAYER_SLUGS={
+    'black-hole-temperature':true,
     'klein-graphene':true,
     'spin-hall':true,
     'liquid-helium':true,
