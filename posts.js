@@ -1,6 +1,30 @@
 /* Posts de Primo Físico · editar aquí; lo usan /blog y la portada */
 window.PRIMO_POSTS = [
   {
+    date: "2026-08-17",
+    dateLabel: "Aug 2026",
+    category: { en:"Cosmology notes", es:"Notas de cosmología", de:"Kosmologische Notizen", zh:"宇宙学笔记" },
+    featured: false,
+    title: {
+      en: "When do black holes cool down?",
+      es: "¿Cuándo se enfrían los agujeros negros?",
+      de: "Wann kühlen Schwarze Löcher ab?",
+      zh: "黑洞什么时候会冷却？"
+    },
+    body: {
+      en: "Dimensional analysis almost writes Hawking's temperature by itself: it fixes the inverse dependence on mass and lands on the right scale. Quantum field theory supplies the missing factor. Then the cosmic microwave background and the future de Sitter expansion decide when a black hole stops gaining more heat than it emits.\nA two-layer explanation, from a recipe written by units to the thermal fate of stellar and supermassive black holes.",
+      es: "El análisis dimensional casi escribe por sí solo la temperatura de Hawking: fija la dependencia inversa con la masa y llega a la escala correcta. La teoría cuántica de campos aporta el factor que falta. Luego, el fondo cósmico de microondas y la futura expansión de de Sitter determinan cuándo un agujero negro deja de ganar más calor del que emite.\nUna explicación en dos capas, desde una receta escrita por unidades hasta el destino térmico de los agujeros negros estelares y supermasivos.",
+      de: "Die Dimensionsanalyse schreibt Hawkings Temperatur fast von selbst: Sie legt die inverse Massenskalierung fest und trifft die richtige Größenordnung. Die Quantenfeldtheorie liefert den fehlenden Faktor. Danach bestimmen der kosmische Mikrowellenhintergrund und die künftige de-Sitter-Expansion, wann ein Schwarzes Loch nicht mehr mehr Wärme aufnimmt als es aussendet.\nEine Erklärung in zwei Ebenen, vom Rezept der Einheiten bis zum thermischen Schicksal stellarer und supermassereicher Schwarzer Löcher.",
+      zh: "量纲分析几乎可以自己写出霍金温度：它确定温度与质量成反比，并给出正确的尺度。量子场论补上缺失的因子。随后，宇宙微波背景与未来的德西特膨胀决定黑洞何时不再吸收多于自身发出的热量。\n分两层解释，从由单位写出的配方一直到恒星级与超大质量黑洞的热命运。"
+    },
+    link: {
+      url: "/blog/black-hole-temperature",
+      label: { en:"Read the explainer", es:"Leer la explicación", de:"Erklärung lesen", zh:"阅读解读" }
+    },
+    images: [],
+    video: null
+  },
+  {
     date: "2026-08-09",
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
