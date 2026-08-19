@@ -1,0 +1,4 @@
+Contact: mailto:bastian.castorene@gmail.com
+Canonical: https://www.primofisico.com/.well-known/security.txt
+Preferred-Languages: es, en, de, zh
+Expires: 2027-08-20T00:00:00.000Z

@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#0a0713" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://drive.google.com https://*.googleusercontent.com https://i.ytimg.com; font-src 'self' data:; connect-src 'self' https://psluzxnfcqmmafjirxbp.supabase.co wss://psluzxnfcqmmafjirxbp.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' blob: https://drive.google.com; worker-src 'self' blob:; upgrade-insecure-requests" />
 <title>Las cargas en un conductor no están donde te dijeron &mdash; Primo Físico</title>
 <meta name="description" content="Por qué las cargas de un conductor se van a la superficie: el argumento del libro solo minimiza la energía. Una derivación desde la termodinámica." />
 <link rel="canonical" href="https://www.primofisico.com/blog/surface-charge" />
@@ -22,17 +24,17 @@
       <a href="../#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
       <a href="../#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
     </div>
-    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" data-pf-action="toggle-theme"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
     <div class="lang-dd">
-      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" data-pf-action="toggle-lang-menu"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
       <ul class="lang-menu" role="listbox">
-        <li role="option" data-lang="en" onclick="pickLang('en')">EN</li>
-        <li role="option" data-lang="es" onclick="pickLang('es')">ES</li>
-        <li role="option" data-lang="de" onclick="pickLang('de')">DE</li>
-        <li role="option" data-lang="zh" onclick="pickLang('zh')">中文</li>
+        <li role="option" data-lang="en" data-pf-action="pick-lang">EN</li>
+        <li role="option" data-lang="es" data-pf-action="pick-lang">ES</li>
+        <li role="option" data-lang="de" data-pf-action="pick-lang">DE</li>
+        <li role="option" data-lang="zh" data-pf-action="pick-lang">中文</li>
       </ul>
     </div>
-    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <button class="nav-burger" aria-label="Menu" data-pf-action="toggle-nav">&#9776;</button>
   </div>
 </nav>
 
@@ -96,69 +98,8 @@
   <p style="margin-top:6px;opacity:.7">Physics for everyone &middot; Notes and explanations</p>
 </footer>
 <script src="../app.js?v=14"></script>
-<script>
-(function(){
-  var ms=document.getElementById('ms'), glow=document.getElementById('msglow');
-  var btns=[].slice.call(ms.querySelectorAll('.ms-btn'));
-  var panels={pop:document.getElementById('p-pop'),tech:document.getElementById('p-tech')};
-  var mode='pop', dragging=false, startX=0, moved=0, w=0;
-
-  function paint(m,animate){
-    mode=m;
-    document.documentElement.setAttribute('data-mode',m);
-    glow.style.transform='translateX('+(m==='tech'?'100%':'0%')+')';
-    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode===m); });
-    for(var k in panels){ panels[k].classList.remove('on'); }
-    panels[m].classList.add('on');
-    if(animate){ panels[m].style.animation='none'; void panels[m].offsetWidth; panels[m].style.animation=''; }
-  }
-  btns.forEach(function(b){ b.addEventListener('click',function(){ if(b.dataset.mode!==mode) paint(b.dataset.mode,true); }); });
-
-  /* drag / swipe the pill */
-  ms.addEventListener('pointerdown',function(e){
-    dragging=true; moved=0; startX=e.clientX; w=ms.clientWidth/2;
-    ms.classList.add('dragging'); ms.setPointerCapture(e.pointerId);
-  });
-  ms.addEventListener('pointermove',function(e){
-    if(!dragging) return;
-    moved=e.clientX-startX;
-    var base=(mode==='tech')?w:0;
-    var x=Math.max(0,Math.min(w,base+moved));
-    glow.style.transform='translateX('+(x/w*100)+'%)';
-  });
-  function release(e){
-    if(!dragging) return;
-    dragging=false; ms.classList.remove('dragging');
-    var target;
-    if(Math.abs(moved)<6){
-      /* treated as a plain tap: switch to whichever half was pressed */
-      var r=ms.getBoundingClientRect();
-      var cx=(e && e.clientX!=null)?e.clientX:(r.left+r.width/2);
-      target=((cx-r.left)>r.width/2)?'tech':'pop';
-    } else {
-      var base=(mode==='tech')?w:0;
-      var x=Math.max(0,Math.min(w,base+moved));
-      target=(x>w/2)?'tech':'pop';
-    }
-    if(target!==mode){ paint(target,true); }
-    else { glow.style.transform='translateX('+(mode==='tech'?'100%':'0%')+')'; }
-  }
-  ms.addEventListener('pointerup',release);
-  ms.addEventListener('pointercancel',release);
-
-  /* dock to the bottom on mobile once the switch scrolls out of view */
-  /* En móvil el interruptor ya está fijo abajo por CSS. En escritorio se ancla
-     al salir de pantalla, sin afectar el flujo del texto. */
-  var sent=document.getElementById('mssent');
-  if(sent && 'IntersectionObserver' in window){
-    new IntersectionObserver(function(en){
-      if(innerWidth<=760){ ms.classList.remove('docked'); return; }
-      ms.classList.toggle('docked', !en[0].isIntersecting && en[0].boundingClientRect.top < 0);
-    },{threshold:0}).observe(sent);
-  }
-})();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2"></script>
+<script src="../blog-mode.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2" integrity="sha384-B2duOBIryCXbX4eDE4BdJwtNkQMRQde3o6IsjfPW28E6aH1CYE96hHeZRG3zY56O" crossorigin="anonymous"></script>
 <script src="../blog-interactions.js?v=11"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&amp;render=explicit" async defer></script>
 </body>
