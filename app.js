@@ -312,6 +312,16 @@ function toggleSub(btn){
   document.querySelectorAll('.navgroup.open').forEach(function(o){ o.classList.remove('open'); });
   if(!was) g.classList.add('open');
 }
+document.addEventListener('click',function(e){
+  var control=e.target.closest&&e.target.closest('[data-pf-action]');
+  if(!control)return;
+  var action=control.getAttribute('data-pf-action');
+  if(action==='toggle-theme')toggleTheme();
+  else if(action==='toggle-lang-menu')toggleLangMenu(control);
+  else if(action==='pick-lang'){e.preventDefault();pickLang(control.getAttribute('data-lang'));}
+  else if(action==='toggle-nav')document.querySelector('.nav-links').classList.toggle('open');
+  else if(action==='toggle-sub')toggleSub(control);
+});
 document.addEventListener('click', function(e){
   if(!e.target.closest || !e.target.closest('.navgroup')){
     document.querySelectorAll('.navgroup.open').forEach(function(o){ o.classList.remove('open'); });

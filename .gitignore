@@ -6,4 +6,9 @@
 *_borrador.*
 borrador-*.md
 borradores/
-
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*-service-account.json
