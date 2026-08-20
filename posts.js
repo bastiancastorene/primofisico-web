@@ -3,7 +3,7 @@ window.PRIMO_POSTS = [
   {
     date: "2026-08-17",
     dateLabel: "Aug 2026",
-    category: { en:"Cosmology notes", es:"Notas de cosmología", de:"Kosmologische Notizen", zh:"宇宙学笔记" },
+    category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: false,
     title: {
       en: "When do black holes cool down?",
