@@ -21,75 +21,47 @@
 <link rel="stylesheet" href="/styles.css?v=13" />
 <link rel="stylesheet" href="/primo-fisico.css?v=59" />
 <link rel="stylesheet" href="/saber-post.css?v=2" />
-<link rel="stylesheet" href="/saber-auto.css?v=1" />
+<link rel="stylesheet" href="/saber-auto.css?v=2" />
 </head>
 <body class="pf-saber-post pf-saber-hub">
-<div class="bg-glow"></div>
-<canvas id="energy"></canvas>
-
+<div class="bg-glow"></div><canvas id="energy"></canvas>
 <nav>
   <a href="/" class="brand"><span class="pf-brand-mark"><img class="pf-brand-logo" src="/assets/primo-fisico-logo.png?v=2" alt="" /></span><span>Primo Físico</span></a>
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="/?open-search=1"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></a>
-      <a href="/#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
-      <a href="/#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
-    </div>
+  <div class="nav-right"><div class="nav-links"><a href="/?open-search=1"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></a><a href="/#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a><a href="/#material"><span class="lang-en">Notes & guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen & Leitfäden</span><span class="lang-zh">笔记与指南</span></a></div>
     <button class="theme-toggle" aria-label="Toggle light/dark theme" data-pf-action="toggle-theme"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
-    <div class="lang-dd">
-      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" data-pf-action="toggle-lang-menu"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
-      <ul class="lang-menu" role="listbox">
-        <li role="option" data-lang="en" data-pf-action="pick-lang">EN</li>
-        <li role="option" data-lang="es" data-pf-action="pick-lang">ES</li>
-        <li role="option" data-lang="de" data-pf-action="pick-lang">DE</li>
-        <li role="option" data-lang="zh" data-pf-action="pick-lang">中文</li>
-      </ul>
-    </div>
+    <div class="lang-dd"><button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" data-pf-action="toggle-lang-menu"><span class="lang-cur"></span><span class="caret">&#9662;</span></button><ul class="lang-menu" role="listbox"><li role="option" data-lang="en" data-pf-action="pick-lang">EN</li><li role="option" data-lang="es" data-pf-action="pick-lang">ES</li><li role="option" data-lang="de" data-pf-action="pick-lang">DE</li><li role="option" data-lang="zh" data-pf-action="pick-lang">中文</li></ul></div>
     <button class="nav-burger" aria-label="Menu" data-pf-action="toggle-nav">&#9776;</button>
   </div>
 </nav>
-
 <div class="backbar"><a class="btn btn-ghost" href="/#saber">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></div>
-
 <main class="pf-saber-hub-main">
   <section class="pf-saber-hub-hero reveal" aria-labelledby="saber-title">
     <span class="eyebrow"><span class="lang-en">CURIOSITY WITHOUT A SYLLABUS</span><span class="lang-es">CURIOSIDAD SIN PROGRAMA</span><span class="lang-de">NEUGIER OHNE LEHRPLAN</span><span class="lang-zh">无课表的好奇心</span></span>
     <h1 id="saber-title" class="section-title pf-saber-hub-title"><span class="lang-en">Knowledge for knowledge’s sake</span><span class="lang-es">Saber por Saber</span><span class="lang-de">Wissen um des Wissens willen</span><span class="lang-zh">为求知而求知</span></h1>
     <p class="pf-saber-hub-lead"><span class="lang-en">A collection for questions that do not need an excuse: unusual organisms, forgotten objects, strange histories, everyday mysteries and connections worth knowing simply because they awaken curiosity.</span><span class="lang-es">Una colección para preguntas que no necesitan excusa: organismos insólitos, objetos olvidados, historias extrañas, misterios cotidianos y conexiones que vale la pena conocer simplemente porque despiertan curiosidad.</span><span class="lang-de">Eine Sammlung für Fragen, die keine Rechtfertigung brauchen: ungewöhnliche Organismen, vergessene Gegenstände, seltsame Geschichten, Rätsel des Alltags und Verbindungen, die allein deshalb wissenswert sind, weil sie Neugier wecken.</span><span class="lang-zh">这里收集无需理由的问题：不同寻常的生物、被遗忘的物件、奇异历史、日常谜题，以及仅仅因为唤起好奇心就值得了解的联系。</span></p>
-    <div class="pf-saber-tags" aria-label="Topics">
-      <span><span class="lang-en">Nature</span><span class="lang-es">Naturaleza</span><span class="lang-de">Natur</span><span class="lang-zh">自然</span></span>
-      <span><span class="lang-en">History</span><span class="lang-es">Historia</span><span class="lang-de">Geschichte</span><span class="lang-zh">历史</span></span>
-      <span><span class="lang-en">Everyday mysteries</span><span class="lang-es">Misterios cotidianos</span><span class="lang-de">Rätsel des Alltags</span><span class="lang-zh">日常谜题</span></span>
-      <span><span class="lang-en">Unexpected ideas</span><span class="lang-es">Ideas inesperadas</span><span class="lang-de">Unerwartete Ideen</span><span class="lang-zh">意外想法</span></span>
-    </div>
+    <div class="pf-saber-tags" aria-label="Topics"><span><span class="lang-en">Nature</span><span class="lang-es">Naturaleza</span><span class="lang-de">Natur</span><span class="lang-zh">自然</span></span><span><span class="lang-en">History</span><span class="lang-es">Historia</span><span class="lang-de">Geschichte</span><span class="lang-zh">历史</span></span><span><span class="lang-en">Everyday mysteries</span><span class="lang-es">Misterios cotidianos</span><span class="lang-de">Rätsel des Alltags</span><span class="lang-zh">日常谜题</span></span><span><span class="lang-en">Unexpected ideas</span><span class="lang-es">Ideas inesperadas</span><span class="lang-de">Unerwartete Ideen</span><span class="lang-zh">意外想法</span></span></div>
     <div class="pf-saber-hub-actions"><a class="btn btn-primary" href="#coleccion"><span class="lang-en">Explore the collection</span><span class="lang-es">Explorar la colección</span><span class="lang-de">Sammlung erkunden</span><span class="lang-zh">探索收藏</span><span aria-hidden="true">&#8595;</span></a></div>
   </section>
-
   <section id="coleccion" class="pf-saber-collection reveal" aria-labelledby="collection-title">
-    <span class="eyebrow"><span class="lang-en">THE COLLECTION BEGINS HERE</span><span class="lang-es">LA COLECCIÓN COMIENZA AQUÍ</span><span class="lang-de">HIER BEGINNT DIE SAMMLUNG</span><span class="lang-zh">收藏从这里开始</span></span>
-    <div class="pf-saber-collection-shell">
-      <div id="saber-posts" class="pf-saber-grid" aria-live="polite">
-        <!-- SABER_POSTS_START -->
-        <div class="pf-saber-collection-empty">
-          <div class="pf-saber-collection-copy">
-            <h2 id="collection-title"><span class="lang-en">The first curiosity is on its way</span><span class="lang-es">La primera curiosidad está en camino</span><span class="lang-de">Die erste Kuriosität ist unterwegs</span><span class="lang-zh">第一篇趣闻正在路上</span></h2>
-            <p><span class="lang-en">The cloud publisher is ready. The first verified reading will appear here.</span><span class="lang-es">El publicador en la nube está preparado. La primera lectura verificada aparecerá aquí.</span><span class="lang-de">Der Cloud-Publisher ist bereit. Der erste geprüfte Beitrag erscheint hier.</span><span class="lang-zh">云端发布器已准备就绪。第一篇经过核验的文章将在这里出现。</span></p>
+    <span class="eyebrow"><span class="lang-en">THE COLLECTION</span><span class="lang-es">LA COLECCIÓN</span><span class="lang-de">DIE SAMMLUNG</span><span class="lang-zh">文章集</span></span>
+    <div class="pf-saber-collection-shell"><div id="saber-posts" class="pf-saber-grid" aria-live="polite">
+      <!-- SABER_POSTS_START -->
+      <article class="pf-saber-card">
+        <a href="/saber/historia-del-pasaporte/" aria-labelledby="collection-title">
+          <div class="pf-saber-card-media"><img src="/assets/saber/historia-del-pasaporte/hero.svg" alt="" /></div>
+          <div class="pf-saber-card-copy">
+            <span class="pf-saber-card-kicker"><span class="lang-en">HISTORY · IDENTITY · TECHNOLOGY</span><span class="lang-es">HISTORIA · IDENTIDAD · TECNOLOGÍA</span><span class="lang-de">GESCHICHTE · IDENTITÄT · TECHNIK</span><span class="lang-zh">历史 · 身份 · 技术</span></span>
+            <h2 id="collection-title"><span class="lang-en">The little book that turned the world into a collection of doors</span><span class="lang-es">El pequeño libro que convirtió el mundo en una colección de puertas</span><span class="lang-de">Das kleine Buch, das die Welt in eine Sammlung von Türen verwandelte</span><span class="lang-zh">把世界变成一扇扇门的小册子</span></h2>
+            <p><span class="lang-en">How war, refugees, machine-readable code and biometrics turned the passport into a compact architecture of recognition and permission.</span><span class="lang-es">Cómo la guerra, los refugiados, el código de lectura mecánica y la biometría convirtieron el pasaporte en una arquitectura compacta de reconocimiento y permiso.</span><span class="lang-de">Wie Krieg, Flucht, maschinenlesbarer Code und Biometrie den Reisepass in eine kompakte Architektur aus Anerkennung und Erlaubnis verwandelten.</span><span class="lang-zh">战争、难民、机读代码与生物识别技术，如何把护照变成一套紧凑的承认与许可架构。</span></p>
+            <div class="pf-saber-card-meta"><span><span class="lang-en">23 Aug 2026</span><span class="lang-es">23 ago 2026</span><span class="lang-de">23. Aug. 2026</span><span class="lang-zh">2026年8月23日</span></span><span><span class="lang-en">16 min</span><span class="lang-es">16 min</span><span class="lang-de">16 Min.</span><span class="lang-zh">16分钟</span></span></div>
           </div>
-          <div class="pf-saber-signal" aria-hidden="true"></div>
-        </div>
-        <!-- SABER_POSTS_END -->
-      </div>
-    </div>
+        </a>
+      </article>
+      <!-- SABER_POSTS_END -->
+    </div></div>
   </section>
 </main>
-
 <div class="backbar"><a class="btn btn-ghost" href="/#saber">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></div>
-<footer>
-  <p><span class="lang-en">Primo Físico · Curiosity without a syllabus</span><span class="lang-es">Primo Físico · Curiosidad sin programa</span><span class="lang-de">Primo Físico · Neugier ohne Lehrplan</span><span class="lang-zh">Primo Físico · 无课表的好奇心</span></p>
-  <p style="margin-top:6px"><a href="/">Primo Físico</a> · <span id="yr"></span></p>
-</footer>
-
-<script src="/app.js?v=14"></script>
-<script src="/saber-post.js?v=2"></script>
-</body>
-</html>
+<footer><p><span class="lang-en">Primo Físico · Curiosity without a syllabus</span><span class="lang-es">Primo Físico · Curiosidad sin programa</span><span class="lang-de">Primo Físico · Neugier ohne Lehrplan</span><span class="lang-zh">Primo Físico · 无课表的好奇心</span></p><p style="margin-top:6px"><a href="/">Primo Físico</a> · <span id="yr"></span></p></footer>
+<script src="/app.js?v=14"></script><script src="/saber-post.js?v=2"></script>
+</body></html>
