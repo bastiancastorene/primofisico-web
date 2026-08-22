@@ -17,6 +17,7 @@ concurrency:
 permissions:
   actions: write
   contents: write
+  pages: write
   pull-requests: write
 
 jobs:
@@ -142,6 +143,7 @@ jobs:
             --body "Publicación automática validada para /saber/$SLUG/. Investigación con búsqueda web, cuatro idiomas, imagen reutilizable y comprobaciones del sitio incluidas.")"
           gh pr merge "$PR_URL" --squash --delete-branch
           MAIN_SHA="$(gh api repos/$GITHUB_REPOSITORY/commits/main --jq .sha)"
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" >/dev/null
           echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
           echo "main_sha=$MAIN_SHA" >> "$GITHUB_OUTPUT"
 
