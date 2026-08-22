@@ -42,7 +42,7 @@ jobs:
 
           now = dt.datetime.now(ZoneInfo("America/Santiago"))
           event = os.environ["EVENT_NAME"]
-          allowed = event == "workflow_dispatch" or now.hour in (11, 18)
+          allowed = event == "workflow_dispatch" or (event == "schedule" and now.hour in (11, 18))
           if event == "workflow_dispatch":
               slot = f"manual-{now:%Y-%m-%d-%H%M}-{os.environ['RUN_ID']}"
           else:
