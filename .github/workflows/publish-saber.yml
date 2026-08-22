@@ -1,0 +1,165 @@
+name: Publish Saber por Saber
+
+on:
+  schedule:
+    - cron: "0 14,15,21,22 * * *"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional topic for this one publication"
+        required: false
+        type: string
+
+concurrency:
+  group: saber-cloud-publisher
+  cancel-in-progress: false
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.4' }}
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Resolve the Chile publication slot
+        id: slot
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import os
+          from zoneinfo import ZoneInfo
+
+          now = dt.datetime.now(ZoneInfo("America/Santiago"))
+          event = os.environ["EVENT_NAME"]
+          allowed = event == "workflow_dispatch" or (event == "schedule" and now.hour in (11, 18))
+          if event == "workflow_dispatch":
+              slot = f"manual-{now:%Y-%m-%d-%H%M}-{os.environ['RUN_ID']}"
+          else:
+              slot = f"{now:%Y-%m-%d}-{now.hour:02d}"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"should_run={'true' if allowed else 'false'}\n")
+              output.write(f"slot={slot}\n")
+          PY
+
+      - name: Check out the protected main branch
+        if: steps.slot.outputs.should_run == 'true'
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verify cloud credentials
+        if: steps.slot.outputs.should_run == 'true'
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::Add OPENAI_API_KEY under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install the OpenAI client
+        if: steps.slot.outputs.should_run == 'true'
+        run: python3 -m pip install --disable-pip-version-check "openai>=1,<3"
+
+      - name: Research, write, illustrate and render one post
+        if: steps.slot.outputs.should_run == 'true'
+        env:
+          SABER_TOPIC: ${{ inputs.topic || '' }}
+          SABER_SLOT: ${{ steps.slot.outputs.slot }}
+        run: python3 scripts/publish_saber.py
+
+      - name: Validate the complete static site
+        if: steps.slot.outputs.should_run == 'true'
+        run: |
+          python3 -m py_compile scripts/publish_saber.py scripts/check_saber.py
+          python3 scripts/check_saber.py
+          python3 scripts/check_site.py
+          find . -type f -name '*.js' -not -path './.git/*' -print0 | xargs -0 -n1 node --check
+
+      - name: Commit the generated artifact to an automation branch
+        if: steps.slot.outputs.should_run == 'true'
+        id: commit
+        env:
+          SLOT: ${{ steps.slot.outputs.slot }}
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          BRANCH="automation/saber-${SLOT}"
+          git config user.name "Primo Físico publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add saber assets/saber sitemap.xml
+          git commit -m "Publish Saber por Saber: ${SLOT}"
+          git push origin "$BRANCH"
+          SLUG="$(python3 -c 'import json; print(json.load(open("saber/publisher/posts.json", encoding="utf-8"))[-1]["slug"])')"
+          TITLE="$(python3 -c 'import json; print(json.load(open("saber/publisher/posts.json", encoding="utf-8"))[-1]["title"]["es"])')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+
+      - name: Run the protected validation check on the generated commit
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          BRANCH: ${{ steps.commit.outputs.branch }}
+        run: |
+          gh workflow run site-integrity.yml --ref "$BRANCH"
+          for attempt in $(seq 1 30); do
+            RUN_ID="$(gh run list --workflow site-integrity.yml --branch "$BRANCH" --event workflow_dispatch --json databaseId --jq '.[0].databaseId // empty')"
+            if [ -n "$RUN_ID" ]; then
+              gh run watch "$RUN_ID" --exit-status
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "::error::The validation workflow did not start."
+          exit 1
+
+      - name: Open and merge the validated pull request
+        if: steps.commit.outputs.changed == 'true'
+        id: merge
+        env:
+          BRANCH: ${{ steps.commit.outputs.branch }}
+          TITLE: ${{ steps.commit.outputs.title }}
+          SLUG: ${{ steps.commit.outputs.slug }}
+        run: |
+          PR_URL="$(gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Saber por Saber: $TITLE" \
+            --body "Publicación automática validada para /saber/$SLUG/. Investigación con búsqueda web, cuatro idiomas, imagen reutilizable y comprobaciones del sitio incluidas.")"
+          gh pr merge "$PR_URL" --squash --delete-branch
+          MAIN_SHA="$(gh api repos/$GITHUB_REPOSITORY/commits/main --jq .sha)"
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+          echo "main_sha=$MAIN_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Verify the public GitHub Pages URL
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          SLUG: ${{ steps.commit.outputs.slug }}
+          MAIN_SHA: ${{ steps.merge.outputs.main_sha }}
+        run: |
+          URL="https://www.primofisico.com/saber/$SLUG/?v=$MAIN_SHA"
+          for attempt in $(seq 1 18); do
+            if BODY="$(curl --fail --silent --show-error --location --max-time 20 "$URL")" &&
+               printf '%s' "$BODY" | grep -Fq "/assets/saber/$SLUG/" &&
+               printf '%s' "$BODY" | grep -Fq 'class="lang-zh"'; then
+              echo "Published and verified: $URL"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::GitHub Pages did not expose the validated post within three minutes."
+          exit 1

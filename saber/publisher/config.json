@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "timezone": "America/Santiago",
+  "publication_hours": [
+    11,
+    18
+  ],
+  "languages": [
+    "en",
+    "es",
+    "de",
+    "zh"
+  ],
+  "source_language": "es",
+  "minimum_spanish_words": 1600,
+  "minimum_references": 6,
+  "recent_topic_window": 120,
+  "image_provider": "Wikimedia Commons",
+  "allowed_image_licenses": [
+    "CC0",
+    "Public domain",
+    "CC BY",
+    "CC BY-SA"
+  ],
+  "site_origin": "https://www.primofisico.com",
+  "section_path": "/saber/"
+}
