@@ -1,0 +1,45 @@
+/* Componentes deterministas para entradas generadas de Saber por Saber. */
+.pf-saber-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px}
+.pf-saber-card{position:relative;overflow:hidden;min-height:340px;border:1px solid rgba(121,104,222,.25);border-radius:24px;background:linear-gradient(150deg,rgba(25,14,57,.9),rgba(19,29,68,.72));box-shadow:0 24px 68px -45px rgba(99,223,231,.7);transition:transform .22s ease,border-color .22s ease}
+.pf-saber-card:hover{transform:translateY(-4px);border-color:rgba(99,223,231,.48)}
+.pf-saber-card>a{display:flex;min-height:340px;flex-direction:column;color:inherit;text-decoration:none}
+.pf-saber-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f0b27}
+.pf-saber-card-media::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(transparent,rgba(8,7,21,.82))}
+.pf-saber-card-media img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.pf-saber-card:hover img{transform:scale(1.025)}
+.pf-saber-card-copy{display:flex;flex:1;flex-direction:column;padding:23px}
+.pf-saber-card-kicker{color:#8fe8eb;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.pf-saber-card h2{margin:10px 0 12px;color:#f6f3ff;font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.16}
+.pf-saber-card p{margin:0;color:#bcb5d3;line-height:1.62}
+.pf-saber-card-meta{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;color:#9992b2;font-size:.78rem}
+
+.pf-saber-article{width:min(1120px,calc(100% - 34px));margin:0 auto;padding:clamp(38px,7vw,86px) 0 80px}
+.pf-saber-article-hero{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(300px,.96fr);gap:clamp(28px,5vw,68px);align-items:center;margin-bottom:clamp(48px,7vw,86px)}
+.pf-saber-article-title{max-width:14ch;margin:10px 0 20px;font-size:clamp(2.4rem,6vw,5.3rem);line-height:1.01}
+.pf-saber-deck{max-width:58ch;color:#c6bfdc;font-size:clamp(1.02rem,1.8vw,1.24rem);line-height:1.7}
+.pf-saber-byline{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:24px;color:#9690aa;font-size:.82rem}
+.pf-saber-hero-figure{overflow:hidden;margin:0;border:1px solid rgba(99,223,231,.22);border-radius:28px;background:#0d0a22;box-shadow:0 30px 90px -48px rgba(89,99,237,.95)}
+.pf-saber-hero-figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.pf-saber-hero-figure figcaption{padding:14px 17px;color:#9892ab;font-size:.72rem;line-height:1.5}
+.pf-saber-hero-figure figcaption a{color:#9fdfe4}
+.pf-saber-copy{width:min(760px,100%);margin:0 auto}
+.pf-saber-copy section{margin:0 0 clamp(44px,6vw,68px)}
+.pf-saber-copy h2{margin:0 0 22px;color:#f2efff;font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.18}
+.pf-saber-copy p{margin:0 0 1.45em;color:#d0cadd;font-size:clamp(1rem,1.35vw,1.1rem);line-height:1.86}
+.pf-saber-copy p:last-child{margin-bottom:0}
+.pf-saber-cite{white-space:nowrap;font-size:.72em;vertical-align:super}
+.pf-saber-cite a{color:#86e2e7;text-decoration:none}
+.pf-saber-references{width:min(850px,100%);margin:72px auto 0;padding:clamp(24px,4vw,38px);border:1px solid rgba(112,92,211,.22);border-radius:24px;background:rgba(16,10,39,.52)}
+.pf-saber-references h2{margin:0 0 20px;color:#f3f0ff}
+.pf-saber-references ol{margin:0;padding-left:1.4rem}
+.pf-saber-references li{margin:.8rem 0;color:#bdb7ce;line-height:1.55}
+.pf-saber-references a{color:#93e3e7;overflow-wrap:anywhere}
+.pf-saber-note{width:min(760px,100%);margin:28px auto 0;color:#8f899f;font-size:.78rem;line-height:1.55}
+html[data-theme="light"] .pf-saber-card{background:rgba(255,255,255,.84);border-color:rgba(95,78,183,.2);box-shadow:0 24px 62px -48px rgba(56,44,129,.55)}
+html[data-theme="light"] .pf-saber-card h2,html[data-theme="light"] .pf-saber-copy h2{color:#2d2058}
+html[data-theme="light"] .pf-saber-card p,html[data-theme="light"] .pf-saber-deck,html[data-theme="light"] .pf-saber-copy p{color:#5f5871}
+html[data-theme="light"] .pf-saber-hero-figure,html[data-theme="light"] .pf-saber-references{background:rgba(255,255,255,.78);border-color:rgba(93,76,180,.17)}
+html[data-theme="light"] .pf-saber-references li{color:#615a72}
+@media(max-width:800px){.pf-saber-article-hero{grid-template-columns:1fr}.pf-saber-article-title{max-width:16ch}.pf-saber-hero-figure{width:100%}}
+@media(max-width:520px){.pf-saber-article{width:min(100% - 24px,1120px)}.pf-saber-card-copy{padding:20px}.pf-saber-copy p{line-height:1.78}.pf-saber-references{border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.pf-saber-card,.pf-saber-card-media img{transition:none}}
