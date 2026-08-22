@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#080715" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src 'self' blob:; upgrade-insecure-requests" />
+<title>Saber por Saber — Primo Físico</title>
+<meta name="description" content="Datos, preguntas, historias y conexiones extrañas que vale la pena conocer por el gusto de saber." />
+<link rel="canonical" href="https://www.primofisico.com/saber/" />
+<link rel="icon" type="image/png" href="/assets/primo-fisico-logo.png?v=2" />
+<link rel="apple-touch-icon" href="/assets/primo-fisico-logo.png?v=2" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Primo Físico" />
+<meta property="og:title" content="Saber por Saber — Primo Físico" />
+<meta property="og:description" content="Curiosidad sin programa: organismos insólitos, objetos olvidados, historias extrañas y preguntas inesperadas." />
+<meta property="og:url" content="https://www.primofisico.com/saber/" />
+<meta property="og:image" content="https://www.primofisico.com/assets/primo-fisico-og.png?v=2" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="/styles.css?v=13" />
+<link rel="stylesheet" href="/primo-fisico.css?v=59" />
+<link rel="stylesheet" href="/saber-post.css?v=2" />
+</head>
+<body class="pf-saber-post pf-saber-hub">
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+
+<nav>
+  <a href="/" class="brand"><span class="pf-brand-mark"><img class="pf-brand-logo" src="/assets/primo-fisico-logo.png?v=2" alt="" /></span><span>Primo Físico</span></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/?open-search=1"><span class="lang-en">Search</span><span class="lang-es">Buscar</span><span class="lang-de">Suchen</span><span class="lang-zh">搜索</span></a>
+      <a href="/#posts"><span class="lang-en">Posts</span><span class="lang-es">Posts</span><span class="lang-de">Beiträge</span><span class="lang-zh">文章</span></a>
+      <a href="/#material"><span class="lang-en">Notes &amp; guides</span><span class="lang-es">Apuntes y guías</span><span class="lang-de">Notizen &amp; Leitfäden</span><span class="lang-zh">笔记与指南</span></a>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" data-pf-action="toggle-theme"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" data-pf-action="toggle-lang-menu"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" data-pf-action="pick-lang">EN</li>
+        <li role="option" data-lang="es" data-pf-action="pick-lang">ES</li>
+        <li role="option" data-lang="de" data-pf-action="pick-lang">DE</li>
+        <li role="option" data-lang="zh" data-pf-action="pick-lang">中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" data-pf-action="toggle-nav">&#9776;</button>
+  </div>
+</nav>
+
+<div class="backbar"><a class="btn btn-ghost" href="/#saber">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></div>
+
+<main class="pf-saber-hub-main">
+  <section class="pf-saber-hub-hero reveal" aria-labelledby="saber-title">
+    <span class="eyebrow"><span class="lang-en">CURIOSITY WITHOUT A SYLLABUS</span><span class="lang-es">CURIOSIDAD SIN PROGRAMA</span><span class="lang-de">NEUGIER OHNE LEHRPLAN</span><span class="lang-zh">无课表的好奇心</span></span>
+    <h1 id="saber-title" class="section-title pf-saber-hub-title"><span class="lang-en">Knowledge for knowledge’s sake</span><span class="lang-es">Saber por Saber</span><span class="lang-de">Wissen um des Wissens willen</span><span class="lang-zh">为求知而求知</span></h1>
+    <p class="pf-saber-hub-lead"><span class="lang-en">A collection for questions that do not need an excuse: unusual organisms, forgotten objects, strange histories, everyday mysteries and connections worth knowing simply because they awaken curiosity.</span><span class="lang-es">Una colección para preguntas que no necesitan excusa: organismos insólitos, objetos olvidados, historias extrañas, misterios cotidianos y conexiones que vale la pena conocer simplemente porque despiertan curiosidad.</span><span class="lang-de">Eine Sammlung für Fragen, die keine Rechtfertigung brauchen: ungewöhnliche Organismen, vergessene Gegenstände, seltsame Geschichten, Rätsel des Alltags und Verbindungen, die allein deshalb wissenswert sind, weil sie Neugier wecken.</span><span class="lang-zh">这里收集无需理由的问题：不同寻常的生物、被遗忘的物件、奇异历史、日常谜题，以及仅仅因为唤起好奇心就值得了解的联系。</span></p>
+    <div class="pf-saber-tags" aria-label="Topics">
+      <span><span class="lang-en">Nature</span><span class="lang-es">Naturaleza</span><span class="lang-de">Natur</span><span class="lang-zh">自然</span></span>
+      <span><span class="lang-en">History</span><span class="lang-es">Historia</span><span class="lang-de">Geschichte</span><span class="lang-zh">历史</span></span>
+      <span><span class="lang-en">Everyday mysteries</span><span class="lang-es">Misterios cotidianos</span><span class="lang-de">Rätsel des Alltags</span><span class="lang-zh">日常谜题</span></span>
+      <span><span class="lang-en">Unexpected ideas</span><span class="lang-es">Ideas inesperadas</span><span class="lang-de">Unerwartete Ideen</span><span class="lang-zh">意外想法</span></span>
+    </div>
+    <div class="pf-saber-hub-actions"><a class="btn btn-primary" href="#coleccion"><span class="lang-en">Explore the collection</span><span class="lang-es">Explorar la colección</span><span class="lang-de">Sammlung erkunden</span><span class="lang-zh">探索收藏</span><span aria-hidden="true">&#8595;</span></a></div>
+  </section>
+
+  <section id="coleccion" class="pf-saber-collection reveal" aria-labelledby="collection-title">
+    <span class="eyebrow"><span class="lang-en">THE COLLECTION BEGINS HERE</span><span class="lang-es">LA COLECCIÓN COMIENZA AQUÍ</span><span class="lang-de">HIER BEGINNT DIE SAMMLUNG</span><span class="lang-zh">收藏从这里开始</span></span>
+    <div class="pf-saber-collection-shell">
+      <div id="saber-posts" class="pf-saber-collection-empty" aria-live="polite">
+        <div class="pf-saber-collection-copy">
+          <h2 id="collection-title"><span class="lang-en">The first curiosity is on its way</span><span class="lang-es">La primera curiosidad está en camino</span><span class="lang-de">Die erste Kuriosität ist unterwegs</span><span class="lang-zh">第一篇趣闻正在路上</span></h2>
+          <p><span class="lang-en">This space is ready for the first post. Each new entry will keep the four languages and the same clear reading structure used throughout Primo Físico.</span><span class="lang-es">Este espacio está preparado para el primer post. Cada nueva entrada conservará los cuatro idiomas y la misma estructura de lectura clara de Primo Físico.</span><span class="lang-de">Dieser Bereich ist für den ersten Beitrag vorbereitet. Jeder neue Eintrag behält die vier Sprachen und die klare Lesestruktur von Primo Físico bei.</span><span class="lang-zh">这里已为第一篇文章准备就绪。每篇新内容都会保留四种语言，并延续 Primo Físico 清晰的阅读结构。</span></p>
+        </div>
+        <div class="pf-saber-signal" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="backbar"><a class="btn btn-ghost" href="/#saber">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></div>
+<footer>
+  <p><span class="lang-en">Primo Físico · Curiosity without a syllabus</span><span class="lang-es">Primo Físico · Curiosidad sin programa</span><span class="lang-de">Primo Físico · Neugier ohne Lehrplan</span><span class="lang-zh">Primo Físico · 无课表的好奇心</span></p>
+  <p style="margin-top:6px"><a href="/">Primo Físico</a> · <span id="yr"></span></p>
+</footer>
+
+<script src="/app.js?v=14"></script>
+<script src="/saber-post.js?v=2"></script>
+</body>
+</html>

@@ -15,6 +15,10 @@ Los PDFs permanecen en Google Drive; el repositorio conserva las páginas, el c�
 
 Servir la carpeta con un servidor HTTP desde la raíz del repositorio. No abrir `index.html` directamente con `file://`, porque las rutas absolutas y las cargas de material requieren un origen HTTP.
 
+## Subposts de Saber por Saber
+
+La colección tiene su portada en `/saber/`. Sus subposts usan la variante visual `pf-saber-post`. Cada página debe declarar `class="pf-saber-post"` en `<body>`, cargar `/saber-post.css?v=2` después de los estilos compartidos y cargar `/saber-post.js?v=2` después de `app.js`. El script añade únicamente la decoración de fondo; el contenido, los idiomas y las interacciones siguen usando los componentes compartidos.
+
 ## Publicación
 
 1. Mantener el dominio en una cuenta propia con privacidad, 2FA y renovación automática.
