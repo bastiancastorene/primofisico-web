@@ -675,7 +675,10 @@ def main() -> int:
         print(f"Slot {args.slot} is already published; no changes.")
         return 0
 
-    article = request_article(config, registry, args.topic)
+    selected_topic = args.topic.strip()
+    if not selected_topic and not registry:
+        selected_topic = str(config.get("first_topic", "")).strip()
+    article = request_article(config, registry, selected_topic)
     validate_article(article, config, registry)
     image = acquire_image(article)
     published_at = dt.datetime.now(dt.timezone.utc).date().isoformat()
