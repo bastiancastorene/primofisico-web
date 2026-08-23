@@ -828,6 +828,8 @@ html[data-theme="light"] .material-actions{background:rgba(124,58,237,.02)}
 .react-like.selected{color:#fff;border-color:rgba(217,70,239,.7);background:linear-gradient(100deg,var(--v1),var(--v2));box-shadow:0 8px 22px -12px rgba(217,70,239,.9)}
 .react-dislike.selected{color:#fff;border-color:rgba(79,70,229,.72);background:linear-gradient(100deg,#4338ca,#6366f1);box-shadow:0 8px 22px -12px rgba(79,70,229,.9)}
 .action-btn.compact{min-height:36px;padding:6px 10px;font-size:.72rem}
+.view-stat{cursor:default;font-variant-numeric:tabular-nums}
+.view-stat:hover{transform:none;border-color:var(--panel-brd);background:rgba(255,255,255,.035)}
 .pdf-tech{isolation:isolate;overflow:visible;color:#fff;border-color:rgba(168,120,255,.38);background:linear-gradient(100deg,rgba(124,58,237,.84),rgba(217,70,239,.78),rgba(79,70,229,.84));box-shadow:0 9px 25px -15px rgba(217,70,239,.9)}
 .pdf-tech:hover{background:linear-gradient(100deg,rgba(124,58,237,.96),rgba(217,70,239,.92),rgba(79,70,229,.96));box-shadow:0 12px 30px -14px rgba(217,70,239,.95)}
 .pdf-arrow{display:inline-block;color:rgba(255,255,255,.92);font-size:1.05rem;line-height:1;transition:transform .24s ease,text-shadow .24s ease}

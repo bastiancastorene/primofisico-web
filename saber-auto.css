@@ -12,6 +12,12 @@
 .pf-saber-card h2{margin:10px 0 12px;color:#f6f3ff;font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.16}
 .pf-saber-card p{margin:0;color:#bcb5d3;line-height:1.62}
 .pf-saber-card-meta{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;color:#9992b2;font-size:.78rem}
+.saber-card-actions{display:flex;align-items:center;gap:8px;padding:0 23px 22px}
+.saber-card-actions .reaction-pair{flex:0 1 auto}
+.saber-card-actions .view-stat{flex:0 0 auto}
+.saber-card-actions .share-wrap{flex:1 1 auto;min-width:0}
+.saber-card-actions .share-wrap>.action-btn{width:100%}
+.saber-top-actions{justify-content:flex-start;margin:18px 0 0}
 
 .pf-saber-article{width:min(1120px,calc(100% - 34px));margin:0 auto;padding:clamp(38px,7vw,86px) 0 80px}
 .pf-saber-article-hero{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(300px,.96fr);gap:clamp(28px,5vw,68px);align-items:center;margin-bottom:clamp(42px,6vw,70px)}
@@ -22,9 +28,9 @@
 .pf-saber-hero-figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .pf-saber-hero-figure figcaption{padding:14px 17px;color:#9892ab;font-size:.72rem;line-height:1.5}
 .pf-saber-copy{width:min(760px,100%);margin:0 auto}
-.pf-saber-copy section{margin:0 0 clamp(44px,6vw,68px)}
+.pf-saber-copy section{max-width:none;min-height:0;margin:0 0 clamp(32px,4vw,44px);padding:0}
 .pf-saber-copy h2{margin:0 0 22px;color:#f2efff;font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.18}
-.pf-saber-copy p{margin:0 0 1.45em;color:#d0cadd;font-size:clamp(1rem,1.35vw,1.1rem);line-height:1.86}
+.pf-saber-copy p{margin:0 0 1.15em;color:#d0cadd;font-size:clamp(1rem,1.35vw,1.1rem);line-height:1.78}
 .pf-saber-copy p:last-child{margin-bottom:0}
 .pf-saber-copy code{padding:.08em .28em;border:1px solid rgba(119,217,225,.2);border-radius:.35em;background:rgba(99,223,231,.07);color:#a6edf0}
 .pf-saber-cite{white-space:nowrap;font-size:.72em;vertical-align:super}
@@ -53,7 +59,7 @@ html[data-theme="light"] .pf-passport-mrz code{color:#33285b}
 html[data-theme="light"] .pf-passport-timeline span{color:#655d78}
 @media(max-width:800px){.pf-saber-article-hero{grid-template-columns:1fr}.pf-saber-article-title{max-width:16ch}.pf-saber-hero-figure{width:100%}}
 @media(max-width:620px){.pf-passport-timeline{grid-template-columns:1fr}.pf-passport-timeline div{min-height:96px;border-right:0;border-bottom:1px solid rgba(117,101,219,.21)}.pf-passport-timeline div:last-child{border-bottom:0}}
-@media(max-width:520px){.pf-saber-article{width:min(100% - 24px,1120px)}.pf-saber-card-copy{padding:20px}.pf-saber-copy p{line-height:1.78}.pf-saber-references{border-radius:20px}.pf-passport-mrz{padding:20px 16px}}
+@media(max-width:520px){.pf-saber-article{width:min(100% - 24px,1120px)}.pf-saber-card-copy{padding:20px}.saber-card-actions{padding:0 20px 20px}.pf-saber-copy p{line-height:1.72}.pf-saber-copy section{margin-bottom:30px}.pf-saber-references{border-radius:20px}.pf-passport-mrz{padding:20px 16px}}
 @media(prefers-reduced-motion:reduce){.pf-saber-card,.pf-saber-card-media img{transition:none}}
 
 /* Slow-earthquake article components. */

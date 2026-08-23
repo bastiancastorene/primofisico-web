@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#080715" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src 'self' blob:; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://psluzxnfcqmmafjirxbp.supabase.co wss://psluzxnfcqmmafjirxbp.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; media-src 'self' blob:; worker-src 'self' blob:; upgrade-insecure-requests" />
 <title>El terremoto que tarda semanas en ocurrir — Primo Físico</title>
 <meta name="description" content="Por qué algunas fallas liberan un momento sísmico equivalente al de un terremoto en semanas, cómo se detectan los terremotos lentos y por qué no constituyen un reloj de predicción." />
 <link rel="canonical" href="https://www.primofisico.com/saber/terremoto-lento/" />
@@ -17,10 +17,10 @@
 <meta property="og:url" content="https://www.primofisico.com/saber/terremoto-lento/" />
 <meta property="og:image" content="https://www.primofisico.com/assets/saber/terremoto-lento/hero.svg" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="stylesheet" href="/styles.css?v=13" />
-<link rel="stylesheet" href="/primo-fisico.css?v=59" />
-<link rel="stylesheet" href="/saber-post.css?v=2" />
-<link rel="stylesheet" href="/saber-auto.css?v=3" />
+<link rel="stylesheet" href="/styles.css?v=14" />
+<link rel="stylesheet" href="/primo-fisico.css?v=62" />
+<link rel="stylesheet" href="/saber-post.css?v=5" />
+<link rel="stylesheet" href="/saber-auto.css?v=4" />
 </head>
 <body class="pf-saber-post">
 <div class="bg-glow"></div><canvas id="energy"></canvas>
@@ -57,5 +57,8 @@
 </main>
 <div class="backbar"><a class="btn btn-ghost" href="/saber/">&larr; <span class="lang-en">Back to the collection</span><span class="lang-es">Volver a la colección</span><span class="lang-de">Zurück zur Sammlung</span><span class="lang-zh">返回文章集</span></a></div>
 <footer><p><span class="lang-en">Primo Físico · Curiosity without a syllabus</span><span class="lang-es">Primo Físico · Curiosidad sin programa</span><span class="lang-de">Primo Físico · Neugier ohne Lehrplan</span><span class="lang-zh">Primo Físico · 无课表的好奇心</span></p><p style="margin-top:6px"><a href="/">Primo Físico</a> · <span id="yr"></span></p></footer>
-<script src="/app.js?v=14"></script><script src="/saber-post.js?v=2"></script>
+<script src="/app.js?v=14"></script><script src="/saber-post.js?v=3"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2" integrity="sha384-B2duOBIryCXbX4eDE4BdJwtNkQMRQde3o6IsjfPW28E6aH1CYE96hHeZRG3zY56O" crossorigin="anonymous"></script>
+<script src="/blog-interactions.js?v=13"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&amp;render=explicit" async defer></script>
 </body></html>

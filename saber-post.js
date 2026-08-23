@@ -15,6 +15,15 @@
     for(var filamentIndex=0;filamentIndex<12;filamentIndex++){
       var filament=document.createElement('i');
       filament.className='pf-anemone-filament';
+      var upper=document.createElement('span');
+      upper.className='pf-anemone-segment pf-anemone-segment--upper';
+      var middle=document.createElement('span');
+      middle.className='pf-anemone-segment pf-anemone-segment--middle';
+      var tip=document.createElement('span');
+      tip.className='pf-anemone-segment pf-anemone-segment--tip';
+      middle.appendChild(tip);
+      upper.appendChild(middle);
+      filament.appendChild(upper);
       filaments.appendChild(filament);
     }
     form.appendChild(core);
