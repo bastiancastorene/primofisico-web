@@ -20,6 +20,10 @@
       prompt:{en:'What detail surprised you most in the history of the passport?',es:'¿Qué detalle te sorprendió más en la historia del pasaporte?',de:'Welches Detail aus der Geschichte des Reisepasses hat dich am meisten überrascht?',zh:'护照历史中的哪个细节最让你惊讶？'},
       topic:{en:'the history of the passport',es:'la historia del pasaporte',de:'der Geschichte des Reisepasses',zh:'护照的历史'}
     },
+    'saber-vih':{
+      prompt:{en:'What surprised you most about the long history of HIV before 1981?',es:'¿Qué te sorprendió más de la larga historia del VIH antes de 1981?',de:'Was hat dich an der langen Geschichte von HIV vor 1981 am meisten überrascht?',zh:'1981年以前 HIV 的漫长历史中，什么最让你惊讶？'},
+      topic:{en:'the early history of HIV and the AIDS pandemic',es:'la historia temprana del VIH y la pandemia de sida',de:'der frühen Geschichte von HIV und der Aids-Pandemie',zh:'HIV 的早期历史与艾滋病大流行'}
+    },
     'klein-graphene':{
       pdfs:[
         {url:'https://drive.google.com/file/d/1ysdlE7V_DQ7UbNNmKfbX21Pq2dYHiiYJ/view',label:{en:'Detailed calculations · ES',es:'Cálculos detallados · ES',de:'Detaillierte Berechnungen · ES',zh:'详细计算 · ES'}},
