@@ -48,10 +48,12 @@
   }
   function render(){
     var target=document.querySelector('[data-saber-feed]'),empty=document.querySelector('[data-saber-empty]');if(!target)return;
+    var fallback=target.innerHTML;
+    if(target.children.length)setupCarousel(target);
     fetch('/saber/',{credentials:'same-origin'}).then(function(response){if(!response.ok)throw new Error('Saber feed unavailable');return response.text();}).then(function(html){
       var documentCopy=new DOMParser().parseFromString(html,'text/html'),sources=Array.prototype.slice.call(documentCopy.querySelectorAll('#saber-posts .pf-saber-card')).slice(0,6);
       target.innerHTML=sources.map(card).join('');target.hidden=!sources.length;if(empty)empty.hidden=!!sources.length;if(sources.length)setupCarousel(target);
-    }).catch(function(){target.hidden=true;if(empty)empty.hidden=false;});
+    }).catch(function(){target.innerHTML=fallback;target.hidden=!target.children.length;if(empty)empty.hidden=!!target.children.length;});
   }
   render();
 })();
