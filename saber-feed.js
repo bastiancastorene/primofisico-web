@@ -55,5 +55,12 @@
       target.innerHTML=sources.map(card).join('');target.hidden=!sources.length;if(empty)empty.hidden=!!sources.length;if(sources.length)setupCarousel(target);
     }).catch(function(){target.innerHTML=fallback;target.hidden=!target.children.length;if(empty)empty.hidden=!!target.children.length;});
   }
+  var randomButton=document.getElementById('pf-saber-random');
+  if(randomButton)randomButton.addEventListener('click',function(){
+    var links=Array.prototype.slice.call(document.querySelectorAll('#saber-feed .pf-saber-post-card>.plink'));
+    if(!links.length)return;
+    var destination=links[Math.floor(Math.random()*links.length)].getAttribute('href');
+    if(destination)window.location.href=destination;
+  });
   render();
 })();

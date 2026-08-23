@@ -601,7 +601,7 @@
     var script=document.createElement('script');script.src=src;script.onload=done;script.onerror=done;document.body.appendChild(script);
   }
   function loadInteractions(done){
-    loadScript(sitePath('/blog-interactions.js?v=11'),function(){
+    loadScript(sitePath('/blog-interactions.js?v=13'),function(){
       loadScript('https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&render=explicit',function(){if(done)done();});
     });
   }
