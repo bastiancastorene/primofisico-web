@@ -36,13 +36,14 @@
     function currentPage(){var max=Math.max(0,target.scrollWidth-target.clientWidth),pages=pageCount();return max?Math.max(0,Math.min(pages-1,Math.round(target.scrollLeft/max*(pages-1)))):0;}
     function go(page,behavior){var list=items(),pages=pageCount();page=Math.max(0,Math.min(pages-1,page));var item=list[Math.min(list.length-1,page*pageSize())];if(!item)return;var left=target.scrollLeft+item.getBoundingClientRect().left-target.getBoundingClientRect().left;target.scrollTo({left:left,behavior:behavior||'smooth'});}
     function labels(){var lang=language();target.setAttribute('aria-label',LABELS.region[lang]);previous.setAttribute('aria-label',LABELS.previous[lang]);next.setAttribute('aria-label',LABELS.next[lang]);Array.prototype.slice.call(dots.children).forEach(function(dot,index){dot.setAttribute('aria-label',LABELS.page[lang]+' '+(index+1));});}
-    function update(){var page=currentPage(),pages=pageCount();previous.disabled=page===0;next.disabled=page>=pages-1;Array.prototype.slice.call(dots.children).forEach(function(dot,index){var active=index===page;dot.classList.toggle('is-active',active);dot.setAttribute('aria-selected',String(active));dot.tabIndex=active?0:-1;});}
+    function update(){var page=currentPage(),pages=pageCount(),targetRect=target.getBoundingClientRect();items().forEach(function(item){var rect=item.getBoundingClientRect(),overlap=Math.max(0,Math.min(rect.right,targetRect.right)-Math.max(rect.left,targetRect.left)),ratio=rect.width?overlap/rect.width:0;item.classList.toggle('is-active',ratio>=.75);});previous.disabled=page===0;next.disabled=page>=pages-1;Array.prototype.slice.call(dots.children).forEach(function(dot,index){var active=index===page;dot.classList.toggle('is-active',active);dot.setAttribute('aria-selected',String(active));dot.tabIndex=active?0:-1;});}
     function rebuild(){var pages=pageCount();dots.innerHTML='';for(var index=0;index<pages;index++){(function(page){var dot=document.createElement('button');dot.type='button';dot.className='pf-carousel-dot';dot.setAttribute('role','tab');dot.addEventListener('click',function(){go(page);});dots.appendChild(dot);})(index);}controls.hidden=pages<2;labels();update();}
     var snapTimer=0;target.addEventListener('scroll',function(){update();clearTimeout(snapTimer);snapTimer=setTimeout(function(){go(currentPage(),'auto');},180);},{passive:true});
     previous.addEventListener('click',function(){go(currentPage()-1);});next.addEventListener('click',function(){go(currentPage()+1);});
     target.addEventListener('keydown',function(event){if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();go(currentPage()+(event.key==='ArrowLeft'?-1:1));}});
     var dragging=false,startX=0,startScroll=0;target.addEventListener('pointerdown',function(event){if(event.pointerType==='touch'||event.button!==0)return;dragging=true;startX=event.clientX;startScroll=target.scrollLeft;});target.addEventListener('pointermove',function(event){if(!dragging)return;var dx=event.clientX-startX;if(Math.abs(dx)<7)return;target.classList.add('is-dragging');event.preventDefault();target.scrollLeft=startScroll-dx;});['pointerup','pointercancel','mouseleave'].forEach(function(name){target.addEventListener(name,function(){if(!dragging)return;dragging=false;target.classList.remove('is-dragging');go(currentPage(),'auto');});});
     if(window.ResizeObserver)new ResizeObserver(rebuild).observe(target);else window.addEventListener('resize',rebuild,{passive:true});
+    if(window.MutationObserver)new MutationObserver(rebuild).observe(target,{childList:true});
     if(window.MutationObserver)new MutationObserver(labels).observe(document.documentElement,{attributes:true,attributeFilter:['data-lang']});
     rebuild();
   }
@@ -57,10 +58,10 @@
   }
   var randomButton=document.getElementById('pf-saber-random');
   if(randomButton)randomButton.addEventListener('click',function(){
-    var links=Array.prototype.slice.call(document.querySelectorAll('#saber-feed .pf-saber-post-card>.plink'));
+    var links=Array.prototype.slice.call(document.querySelectorAll('#saber-feed .pf-saber-post-card .plink'));
     if(!links.length)return;
     var destination=links[Math.floor(Math.random()*links.length)].getAttribute('href');
-    if(destination)window.location.href=destination;
+    if(destination)window.location.assign(destination);
   });
   render();
 })();

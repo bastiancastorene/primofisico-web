@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">HIV, a molecular clock and an urban network</title>
+  <desc id="desc">Abstract dark illustration of a viral particle, a branching genetic tree and connected cities.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#09061d"/><stop offset=".55" stop-color="#171048"/><stop offset="1" stop-color="#082d43"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#ff5edc" stop-opacity=".45"/><stop offset="1" stop-color="#ff5edc" stop-opacity="0"/></radialGradient>
+    <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff65d7"/><stop offset=".52" stop-color="#8a6dff"/><stop offset="1" stop-color="#4ff5f1"/></linearGradient>
+    <linearGradient id="branch" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#4ff5f1"/><stop offset=".52" stop-color="#9b87ff"/><stop offset="1" stop-color="#ff71d9"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M46 0H0V46" fill="none" stroke="#8b7cff" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="1200" height="900" rx="42" fill="url(#bg)"/>
+  <rect x="28" y="28" width="1144" height="844" rx="30" fill="url(#grid)" stroke="#8e7cff" stroke-opacity=".2"/>
+  <circle cx="350" cy="310" r="260" fill="url(#halo)" filter="url(#blur)"/>
+  <circle cx="855" cy="590" r="230" fill="#31dce3" opacity=".1" filter="url(#blur)"/>
+  <g opacity=".52" fill="none" stroke="url(#branch)" stroke-linecap="round" filter="url(#glow)">
+    <path d="M610 450C520 378 482 280 398 214" stroke-width="4"/>
+    <path d="M610 450C515 470 431 432 330 394" stroke-width="4"/>
+    <path d="M610 450C528 558 464 636 355 700" stroke-width="4"/>
+    <path d="M610 450C706 378 763 282 862 205" stroke-width="4"/>
+    <path d="M610 450C708 468 805 437 928 388" stroke-width="4"/>
+    <path d="M610 450C706 560 776 654 894 730" stroke-width="4"/>
+    <path d="M398 214L322 156M398 214L438 130M330 394L254 345M330 394L242 442M355 700L284 758M355 700L395 790M862 205L850 116M862 205L943 151M928 388L1021 335M928 388L1046 438M894 730L975 782M894 730L873 820" stroke-width="2.5"/>
+  </g>
+  <g fill="#9cf7f2" filter="url(#glow)">
+    <circle cx="322" cy="156" r="6"/><circle cx="438" cy="130" r="6"/><circle cx="254" cy="345" r="6"/><circle cx="242" cy="442" r="6"/><circle cx="284" cy="758" r="6"/><circle cx="395" cy="790" r="6"/>
+    <circle cx="850" cy="116" r="6"/><circle cx="943" cy="151" r="6"/><circle cx="1021" cy="335" r="6"/><circle cx="1046" cy="438" r="6"/><circle cx="975" cy="782" r="6"/><circle cx="873" cy="820" r="6"/>
+  </g>
+  <g transform="translate(610 450)" filter="url(#glow)">
+    <circle r="142" fill="#0d0a2c" stroke="url(#shell)" stroke-width="6"/>
+    <circle r="116" fill="none" stroke="#d9c8ff" stroke-opacity=".32" stroke-width="2" stroke-dasharray="4 13"/>
+    <path d="M-70-70C-12-126 74-95 88-28C101 38 40 107-28 92C-92 77-121-18-70-70Z" fill="none" stroke="#ff78db" stroke-width="3" opacity=".82"/>
+    <path d="M-62 63C-100 16-76-71-15-84C46-97 95-42 75 19C55 81-21 105-62 63Z" fill="none" stroke="#62e8ef" stroke-width="3" opacity=".82"/>
+    <g fill="url(#shell)"><circle cx="-93" cy="-24" r="10"/><circle cx="-40" cy="-105" r="10"/><circle cx="50" cy="-95" r="10"/><circle cx="104" cy="-5" r="10"/><circle cx="62" cy="84" r="10"/><circle cx="-37" cy="102" r="10"/><circle cx="-105" cy="45" r="10"/></g>
+    <circle r="25" fill="#f7eaff" opacity=".92"/><circle r="12" fill="#8d72ff"/>
+  </g>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#d8d2ff">
+    <text x="78" y="104" font-size="22" letter-spacing="5" fill="#8fe8eb">MOLECULAR MEMORY</text>
+    <text x="78" y="800" font-size="17" letter-spacing="3" fill="#aaa3d1">KINSHASA · 1920 · 1959 · 1960 · 1981</text>
+    <text x="930" y="94" font-size="15" letter-spacing="2" fill="#ff9be3">HIV-1 GROUP M</text>
+  </g>
+  <g stroke="#f5f0ff" stroke-opacity=".7" stroke-width="1.5" fill="none"><path d="M760 760h290"/><path d="M760 760v-14M1050 760v-14"/></g>
+  <text x="760" y="790" font-family="system-ui, sans-serif" font-size="14" fill="#b9b0d3">a history written in sequences</text>
+</svg>
