@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<title id="title">Slow slip across a subduction interface</title>
+<desc id="desc">A dark tectonic cross-section with a slow-slip front, tremor pulses and geodetic stations.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#09071a"/><stop offset=".55" stop-color="#171043"/><stop offset="1" stop-color="#062a3a"/></linearGradient>
+  <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6654c8"/><stop offset="1" stop-color="#251d67"/></linearGradient>
+  <linearGradient id="slip" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#7b4df4" stop-opacity=".2"/><stop offset=".5" stop-color="#60e7e5" stop-opacity=".95"/><stop offset="1" stop-color="#7b4df4" stop-opacity=".12"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="smallGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#9b8cff" stroke-opacity=".07"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<circle cx="960" cy="160" r="170" fill="#55e9e8" opacity=".08" filter="url(#glow)"/>
+<circle cx="240" cy="730" r="220" fill="#7447ef" opacity=".16" filter="url(#glow)"/>
+<path d="M0 0H1200V260C1010 245 820 255 680 285C480 328 290 318 0 350Z" fill="#1c1649" stroke="#7564da" stroke-opacity=".26"/>
+<path d="M0 350C280 315 478 323 681 285C852 254 1011 243 1200 258V900H0Z" fill="url(#plate)" opacity=".77"/>
+<path d="M0 520C220 495 365 481 514 435C689 381 815 315 1002 285C1078 273 1141 271 1200 274L1200 390C1059 386 935 405 810 466C637 551 516 650 354 712C230 759 102 783 0 778Z" fill="#0e0b2c" stroke="#8570e9" stroke-opacity=".28"/>
+<path d="M0 522C219 498 367 484 514 438C683 385 816 315 1001 286C1079 274 1142 271 1200 274" fill="none" stroke="#c8bdff" stroke-opacity=".52" stroke-width="3"/>
+<path d="M120 520C313 495 427 466 564 417C725 360 842 314 1013 289" fill="none" stroke="url(#slip)" stroke-width="30" stroke-linecap="round" opacity=".72" filter="url(#glow)"/>
+<path d="M150 518C320 493 432 466 570 418C716 368 840 315 1002 290" fill="none" stroke="#79f4ed" stroke-width="4" stroke-dasharray="3 17" stroke-linecap="round" filter="url(#smallGlow)"/>
+<g fill="none" stroke="#82e8eb" stroke-width="5" stroke-linecap="round" filter="url(#smallGlow)">
+  <path d="M310 479c8-33 16 34 24 0s16-34 24 0 16 36 24 0 16-35 24 0"/>
+  <path d="M494 413c8-29 16 29 24 0s16-31 24 0 16 30 24 0 16-27 24 0"/>
+  <path d="M708 346c8-25 16 25 24 0s16-28 24 0 16 27 24 0 16-25 24 0"/>
+</g>
+<g stroke="#ad9cff" stroke-width="2" opacity=".78" fill="none">
+  <path d="M240 176v246"/><path d="M240 182l-12 18m12-18 12 18"/>
+  <path d="M240 422l-12-18m12 18 12-18"/>
+  <path d="M468 138v228"/><path d="M468 144l-12 18m12-18 12 18"/>
+  <path d="M468 366l-12-18m12 18 12-18"/>
+</g>
+<g fill="#e8ffff" stroke="#60e7e5" stroke-width="3">
+  <circle cx="240" cy="170" r="8"/><circle cx="468" cy="132" r="8"/><circle cx="745" cy="112" r="8"/>
+</g>
+<g fill="#c9c1ff" font-family="Arial,Helvetica,sans-serif">
+  <text x="214" y="157" font-size="19">GNSS</text><text x="443" y="119" font-size="19">GNSS</text><text x="720" y="99" font-size="19">GNSS</text>
+  <text x="55" y="837" font-size="21" letter-spacing="3" fill="#94e6e4">SUBDUCTION INTERFACE</text>
+  <text x="55" y="870" font-size="16" fill="#aaa1d1">slow slip · tremor · fluid pressure · geodesy</text>
+</g>
+<g fill="none" stroke="#b3a1ff" stroke-width="3" stroke-linecap="round" opacity=".8">
+  <path d="M1020 385c34-34 67-34 101 0s67 34 101 0"/>
+  <path d="M1020 430c34-34 67-34 101 0s67 34 101 0"/>
+  <path d="M1020 475c34-34 67-34 101 0s67 34 101 0"/>
+</g>
+<g fill="#83efe5" font-family="Arial,Helvetica,sans-serif" font-size="18">
+  <text x="930" y="550">weeks, not seconds</text>
+  <text x="929" y="579" fill="#b9b1dd">a rupture front that does not hurry</text>
+</g>
+<path d="M560 650c80-20 144-22 228-8" fill="none" stroke="#62e9e7" stroke-width="3" stroke-dasharray="8 13" opacity=".65"/>
+<path d="M788 642l-18-12m18 12-20 5" fill="none" stroke="#62e9e7" stroke-width="3"/>
+</svg>

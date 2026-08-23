@@ -55,3 +55,17 @@ html[data-theme="light"] .pf-passport-timeline span{color:#655d78}
 @media(max-width:620px){.pf-passport-timeline{grid-template-columns:1fr}.pf-passport-timeline div{min-height:96px;border-right:0;border-bottom:1px solid rgba(117,101,219,.21)}.pf-passport-timeline div:last-child{border-bottom:0}}
 @media(max-width:520px){.pf-saber-article{width:min(100% - 24px,1120px)}.pf-saber-card-copy{padding:20px}.pf-saber-copy p{line-height:1.78}.pf-saber-references{border-radius:20px}.pf-passport-mrz{padding:20px 16px}}
 @media(prefers-reduced-motion:reduce){.pf-saber-card,.pf-saber-card-media img{transition:none}}
+
+/* Slow-earthquake article components. */
+.pf-slow-equation{margin:1.2rem 0 1.8rem;padding:17px 20px;border:1px solid rgba(99,223,231,.26);border-radius:16px;background:linear-gradient(135deg,rgba(113,55,244,.12),rgba(14,48,70,.38));box-shadow:inset 0 0 32px rgba(99,223,231,.035)}
+.pf-slow-equation code{display:block;padding:0;border:0;background:none;color:#c9f7f4;font-size:clamp(1rem,2vw,1.32rem);letter-spacing:.01em;line-height:1.7;text-align:center}
+.pf-slow-map-links{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;width:min(850px,100%);margin:0 auto clamp(48px,6vw,70px);padding:16px 18px;border:1px solid rgba(112,92,211,.22);border-radius:16px;background:rgba(16,10,39,.42);color:#aaa3bf;font-size:.8rem}
+.pf-slow-map-links a{color:#8fe8eb;text-decoration:none}
+.pf-slow-map-links a:hover{text-decoration:underline}
+.pf-slow-map-label{margin-right:auto;color:#c8c0dc;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.pf-slow-timeline strong{font-size:clamp(1.25rem,2.3vw,1.85rem);letter-spacing:-.02em;text-transform:lowercase}
+html[data-theme="light"] .pf-slow-equation{background:rgba(255,255,255,.84);border-color:rgba(93,76,180,.18)}
+html[data-theme="light"] .pf-slow-equation code{color:#33285b}
+html[data-theme="light"] .pf-slow-map-links{background:rgba(255,255,255,.82);border-color:rgba(93,76,180,.17);color:#655d78}
+html[data-theme="light"] .pf-slow-map-label{color:#3e3568}
+@media(max-width:620px){.pf-slow-map-links{align-items:flex-start;flex-direction:column}.pf-slow-map-label{margin-right:0}.pf-slow-equation{padding:14px 12px;overflow:auto}}
