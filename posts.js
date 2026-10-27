@@ -1,5 +1,40 @@
 /* Posts de Primo Físico · editar aquí; lo usan /blog y la portada */
 window.PRIMO_POSTS = [
+{
+  "date": "2026-10-27",
+  "dateLabel": "Oct 2026",
+  "category": {
+    "en": "Papers explained",
+    "es": "Papers explicados",
+    "de": "Papers erklärt",
+    "zh": "论文解读"
+  },
+  "featured": false,
+  "doubleExplanation": true,
+  "title": {
+    "en": "An engine that runs without using energy",
+    "de": "Eine Maschine, die ohne Energieverbrauch arbeitet",
+    "zh": "一台不消耗能量就能运转的热机",
+    "es": "Un motor que funciona sin usar energía"
+  },
+  "body": {
+    "en": "The Castorene engine connects reversible work to the number of minimum-energy arrangements available to its particles. The Primarch Formula explains why increasing size can leave work unchanged, yield slow logarithmic growth or recover proportional growth.\nTwo independent versions, with the original figures, from the house analogy to the Carnot limit and Fibonacci–Lucas scaling.",
+    "es": "El motor de Castorene relaciona el trabajo reversible con las formas de organización de mínima energía de sus partículas. La Fórmula Primarca explica por qué aumentar el tamaño puede dejar el trabajo igual, hacerlo crecer lentamente o recuperar un crecimiento proporcional.\nDos versiones independientes, con las figuras originales, desde la analogía de la casa hasta Carnot y el escalamiento Fibonacci–Lucas.",
+    "de": "Die Castorene-Maschine verknüpft reversible Arbeit mit der Zahl möglicher Anordnungen minimaler Energie. Die Primarch-Formel erklärt, warum mehr Größe die Arbeit unverändert lassen, logarithmisch steigern oder proportionales Wachstum ermöglichen kann.\nZwei eigenständige Fassungen mit Originalabbildungen, vom Hausbild bis zur Carnot-Grenze und Fibonacci–Lucas-Skalierung.",
+    "zh": "Castorene热机把可逆功与粒子最低能量排列数联系起来。Primarch公式解释了为什么增大系统有时不增加功，有时只带来缓慢的对数增长，有时则恢复按比例增长。\n两套独立文本配原始图，从房子的类比讲到卡诺极限与Fibonacci–Lucas标度。"
+  },
+  "link": {
+    "url": "/blog/castorene-engine/",
+    "label": {
+      "en": "Read the explainer",
+      "es": "Leer la explicación",
+      "de": "Erklärung lesen",
+      "zh": "阅读解读"
+    }
+  },
+  "images": [],
+  "video": null
+},
   {
     date: "2026-08-17",
     dateLabel: "Aug 2026",
