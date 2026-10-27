@@ -147,7 +147,7 @@
   }
 
   function loadInteractions(){
-    loadScript(window.pfSitePath?window.pfSitePath('/blog-interactions.js?v=11'):'/blog-interactions.js?v=11',function(){
+    loadScript(window.pfSitePath?window.pfSitePath('/blog-interactions.js?v=15'):'/blog-interactions.js?v=15',function(){
       loadScript('https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&render=explicit',function(){});
     });
   }

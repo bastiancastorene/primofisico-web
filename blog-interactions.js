@@ -8,6 +8,11 @@
   };
   var LANGS=['en','es','de','zh'];
   var INTERACTION_POSTS={
+    'castorene-engine':{
+      pdf:'https://arxiv.org/pdf/2510.25533',
+      prompt:{en:'What do you think about the work of an engine depending on the number of ways its particles can arrange themselves?',es:'¿Qué te parece que el trabajo de un motor dependa de cuántas formas tienen sus partículas de organizarse?',de:'Was hältst du davon, dass die Arbeit einer Maschine von den möglichen Anordnungen ihrer Teilchen abhängt?',zh:'热机输出的功取决于粒子有多少种排列方式，你怎么看？'},
+      topic:{en:'the Castorene engine and ground-state degeneracy',es:'el motor de Castorene y la degeneración del estado fundamental',de:'der Castorene-Maschine und der Grundzustandsentartung',zh:'Castorene热机与基态简并'}
+    },
     'black-hole-temperature':{
       prompt:{en:'What surprised you most about the thermal future of black holes?',es:'¿Qué te sorprendió más sobre el futuro térmico de los agujeros negros?',de:'Was hat dich an der thermischen Zukunft Schwarzer Löcher am meisten überrascht?',zh:'黑洞的热学未来最让你惊讶的是什么？'},
       topic:{en:'Hawking temperature and the thermal future of black holes',es:'la temperatura de Hawking y el futuro térmico de los agujeros negros',de:'der Hawking-Temperatur und der thermischen Zukunft Schwarzer Löcher',zh:'霍金温度与黑洞的热学未来'}
