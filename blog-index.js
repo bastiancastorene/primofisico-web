@@ -2,6 +2,10 @@
 (function(){
   'use strict';
   var L=['en','es','de','zh'];
+  var MODE_LABELS={
+    double:{en:'Outreach',es:'Divulgativo',de:'Populär',zh:'科普'},
+    specialized:{en:'Specialized',es:'Especializado',de:'Spezial',zh:'专业'}
+  };
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function localPath(v,fallback){
     v=String(v||'');
@@ -41,8 +45,9 @@
     return html;
   }
   function card(post,featured){
+    var mode=post.doubleExplanation===true?'double':'specialized';
     return '<article class="post'+(featured?' post-feat':'')+'">'+
-      '<div class="pmeta"><span class="pdate">'+ml(post.dateLabel||post.date)+'</span>'+(post.category?'<span class="pcat">'+ml(post.category)+'</span>':'')+'</div>'+
+      '<div class="pmeta"><span class="pdate">'+ml(post.dateLabel||post.date)+'</span>'+(post.category?'<span class="pcat">'+ml(post.category)+'</span>':'')+'<span class="pcat pf-audience-badge" data-audience="'+mode+'">'+ml(MODE_LABELS[mode])+'</span></div>'+
       '<h3>'+ml(post.title)+'</h3>'+bodyHtml(post.body)+media(post)+(post.link?'<a class="plink" href="'+sitePath(localPath(post.link.url,'/blog'))+'">'+ml(post.link.label)+' &rarr;</a>':'')+'</article>';
   }
   var posts=(window.PRIMO_POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
