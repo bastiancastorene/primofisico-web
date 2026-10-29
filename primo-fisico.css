@@ -614,6 +614,8 @@ html[data-theme="light"] .pf-post-card:hover{border-color:rgba(124,58,237,.45);b
 .pf-search-close:hover{transform:rotate(90deg);border-color:var(--accent);background:rgba(217,70,239,.12)}
 .pf-search-close:focus-visible{outline:3px solid rgba(217,70,239,.28);outline-offset:3px}
 html[data-theme="light"] .pf-search-drawer{background:rgba(255,255,255,.88);box-shadow:0 22px 48px -38px rgba(79,70,229,.4)}
+/* La flecha de scroll (z-index 60) no debe tapar los resultados del buscador. */
+html.pf-search-open .peek{visibility:hidden}
 html[data-theme="light"] .pf-search-close{background:rgba(124,58,237,.04)}
 @keyframes pf-search-drawer-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
