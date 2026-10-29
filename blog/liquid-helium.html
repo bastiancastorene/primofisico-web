@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html lang="es" data-lang="es" data-mode="pop">
+<html lang="en" data-lang="en" data-mode="pop">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#0a0713" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://drive.google.com https://*.googleusercontent.com https://i.ytimg.com; font-src 'self' data:; connect-src 'self' https://psluzxnfcqmmafjirxbp.supabase.co wss://psluzxnfcqmmafjirxbp.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' blob: https://drive.google.com; worker-src 'self' blob:; upgrade-insecure-requests" />
-<title>El helio líquido que se niega a congelarse &mdash; Primo Físico</title>
-<meta name="description" content="Por qué el helio líquido puede volverse superfluido y cómo el modelo de Landau aproxima el punto lambda." />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://drive.google.com https://*.googleusercontent.com https://i.ytimg.com; font-src 'self' data:; connect-src 'self' https://psluzxnfcqmmafjirxbp.supabase.co wss://psluzxnfcqmmafjirxbp.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' blob: https://drive.google.com; worker-src 'self' blob:; upgrade-insecure-requests" />
+<title>The liquid helium that refuses to freeze — Primo Físico</title>
+<meta name="description" content="Why liquid helium can become a superfluid and how Landau's model approximates the lambda point." />
 <link rel="canonical" href="https://www.primofisico.com/blog/liquid-helium" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Primo Físico" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:locale:alternate" content="de_DE" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta property="og:title" content="The liquid helium that refuses to freeze" />
+<meta property="og:description" content="Why liquid helium can become a superfluid and how Landau's model approximates the lambda point." />
+<meta property="og:url" content="https://www.primofisico.com/blog/liquid-helium" />
+<meta property="og:image" content="https://www.primofisico.com/assets/helium-phase.jpg" />
+<meta property="og:image:width" content="610" />
+<meta property="og:image:height" content="457" />
+<meta property="og:image:alt" content="Helium phase diagram" />
+<meta property="article:published_time" content="2026-08-01" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The liquid helium that refuses to freeze" />
+<meta name="twitter:description" content="Why liquid helium can become a superfluid and how Landau's model approximates the lambda point." />
+<meta name="twitter:image" content="https://www.primofisico.com/assets/helium-phase.jpg" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The liquid helium that refuses to freeze", "description": "Why liquid helium can become a superfluid and how Landau's model approximates the lambda point.", "url": "https://www.primofisico.com/blog/liquid-helium", "mainEntityOfPage": "https://www.primofisico.com/blog/liquid-helium", "image": "https://www.primofisico.com/assets/helium-phase.jpg", "datePublished": "2026-08-01", "dateModified": "2026-08-01", "inLanguage": ["en", "es", "de", "zh"], "author": {"@type": "Person", "name": "Bastian Castorene", "url": "https://www.castorene.cl/", "sameAs": ["https://orcid.org/0009-0002-9075-5716"]}, "publisher": {"@type": "Organization", "name": "Primo Físico", "url": "https://www.primofisico.com/", "logo": {"@type": "ImageObject", "url": "https://www.primofisico.com/assets/primo-fisico-logo.png"}}}</script>
 <link rel="icon" type="image/png" href="../assets/primo-fisico-logo.png?v=2" />
 <link rel="stylesheet" href="../styles.css?v=14" />
-<link rel="stylesheet" href="../primo-fisico.css?v=64" />
+<link rel="stylesheet" href="../primo-fisico.css?v=65" />
 </head>
 <body>
 <div class="bg-glow"></div>
@@ -44,7 +63,7 @@
 <div class="modewash"></div><div class="modedark"></div>
 <section class="reveal">
   <span class="eyebrow">FIS230 · Helium II</span>
-  <h2 class="section-title"><span class="lang-en">The liquid helium that refuses to freeze</span><span class="lang-es">El helio líquido que se niega a congelarse</span><span class="lang-de">Das flüssige Helium, das nicht gefrieren will</span><span class="lang-zh">拒绝冻结的液氦</span></h2>
+  <h1 class="section-title"><span class="lang-en">The liquid helium that refuses to freeze</span><span class="lang-es">El helio líquido que se niega a congelarse</span><span class="lang-de">Das flüssige Helium, das nicht gefrieren will</span><span class="lang-zh">拒绝冻结的液氦</span></h1>
   <p class="paperorig">Approximation of the λ Point and Thermodynamic Properties of Superfluid <sup>4</sup>He</p>
   <p class="papermeta">B. Castorene, D. Navarrete · FIS230 · UTFSM · <span class="lang-en"><a href="https://drive.google.com/file/d/1gDYiAgRAIQI_ZyNnihwKJj1nUJUOfthy/view" target="_blank" rel="noopener">Read the English report</a></span><span class="lang-es"><a href="https://drive.google.com/file/d/1Tb5N4O9QqGI6vcG0pdrRpb7_jlmYbqrG/view" target="_blank" rel="noopener">Leer el informe en español</a></span><span class="lang-de"><a href="https://drive.google.com/file/d/1gDYiAgRAIQI_ZyNnihwKJj1nUJUOfthy/view" target="_blank" rel="noopener">Englischen Bericht lesen</a></span><span class="lang-zh"><a href="https://drive.google.com/file/d/1gDYiAgRAIQI_ZyNnihwKJj1nUJUOfthy/view" target="_blank" rel="noopener">阅读英文报告</a></span></p>
 
@@ -109,10 +128,10 @@
   <p>&copy; <span id="yr"></span> Primo Físico</p>
   <p style="margin-top:6px;opacity:.7">Physics for everyone &middot; Notes and explanations</p>
 </footer>
-<script src="../app.js?v=14"></script>
-<script src="../blog-mode.js?v=1"></script>
+<script src="../app.js?v=15"></script>
+<script src="../blog-mode.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2" integrity="sha384-B2duOBIryCXbX4eDE4BdJwtNkQMRQde3o6IsjfPW28E6aH1CYE96hHeZRG3zY56O" crossorigin="anonymous"></script>
-<script src="../blog-interactions.js?v=15"></script>
+<script src="../blog-interactions.js?v=16"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&amp;render=explicit" async defer></script>
 </body>
 </html>

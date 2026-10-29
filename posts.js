@@ -40,6 +40,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: false,
+    doubleExplanation: true,
     title: {
       en: "When do black holes cool down?",
       es: "¿Cuándo se enfrían los agujeros negros?",
@@ -53,7 +54,7 @@ window.PRIMO_POSTS = [
       zh: "量纲分析几乎可以自己写出霍金温度：它确定温度与质量成反比，并给出正确的尺度。量子场论补上缺失的因子。随后，宇宙微波背景与未来的德西特膨胀决定黑洞何时不再吸收多于自身发出的热量。\n分两层解释，从由单位写出的配方一直到恒星级与超大质量黑洞的热命运。"
     },
     link: {
-      url: "/blog/black-hole-temperature",
+      url: "/blog/black-hole-temperature/",
       label: { en:"Read the explainer", es:"Leer la explicación", de:"Erklärung lesen", zh:"阅读解读" }
     },
     images: [],
@@ -64,6 +65,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: false,
+    doubleExplanation: true,
     title: {
       en: "The barrier graphene cannot see",
       es: "La barrera que el grafeno no ve",
@@ -88,6 +90,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: false,
+    doubleExplanation: true,
     title: {
       en: "Two spins, two sides",
       es: "Dos espines, dos lados",
@@ -112,6 +115,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: false,
+    doubleExplanation: true,
     title: {
       en: "The liquid helium that refuses to freeze",
       es: "El helio líquido que se niega a congelarse",
@@ -136,6 +140,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Jul 2026",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erkl\u00e4rt", zh:"\u8bba\u6587\u89e3\u8bfb" },
     featured: true,
+    doubleExplanation: true,
     title: {
       en: "The butterfly you can see with heat",
       es: "La mariposa que se ve con calor",
@@ -160,6 +165,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Jul 2026",
     category: { en:"Physics notes", es:"Notas de f\u00edsica", de:"Physik-Notizen", zh:"\u7269\u7406\u7b14\u8bb0" },
     featured: true,
+    doubleExplanation: true,
     title: {
       en: "The charges in a conductor are not where you were told",
       es: "Las cargas en un conductor no est\u00e1n donde te dijeron",
@@ -184,6 +190,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Mar 2025",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erklärt", zh:"论文解读" },
     featured: true,
+    doubleExplanation: true,
     title: {
       en: "A qubit that feels warm at absolute zero",
       es: "Un qubit que se siente tibio en el cero absoluto",
@@ -208,6 +215,7 @@ window.PRIMO_POSTS = [
     dateLabel: "Jul 2026",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erklärt", zh:"论文解读" },
     featured: false,
+    doubleExplanation: true,
     title: {
       en: "The golden ratio hidden inside a magnet",
       es: "El número áureo escondido dentro de un imán",
