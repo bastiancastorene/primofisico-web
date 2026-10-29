@@ -13,10 +13,9 @@ window.pfSitePath=pfSitePath;
 
 /* ---------- language ---------- */
 var LANGS=['en','es','de','zh'];
+/* English is the default; a language picked in the menu is remembered. */
 function detectLang(){
   try{var s=localStorage.getItem('lang'); if(s&&LANGS.indexOf(s)>-1)return s;}catch(e){}
-  var cands=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||'en'];
-  for(var i=0;i<cands.length;i++){var p=(cands[i]||'').toLowerCase().slice(0,2); if(LANGS.indexOf(p)>-1)return p;}
   return 'en';
 }
 function setLang(l){
