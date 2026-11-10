@@ -10,11 +10,12 @@
     mode=next;
     document.documentElement.setAttribute('data-mode',next);
     glow.style.transform='translateX('+(next==='tech'?'100%':'0%')+')';
-    btns.forEach(function(btn){btn.classList.toggle('active',btn.dataset.mode===next);});
+    btns.forEach(function(btn){btn.classList.toggle('active',btn.dataset.mode===next);btn.setAttribute('aria-pressed',String(btn.dataset.mode===next));});
     Object.keys(panels).forEach(function(key){panels[key].classList.remove('on');});
     panels[next].classList.add('on');
     if(animate){panels[next].style.animation='none';void panels[next].offsetWidth;panels[next].style.animation='';}
   }
+  btns.forEach(function(btn){btn.setAttribute('aria-pressed',String(btn.dataset.mode===mode));});
   btns.forEach(function(btn){btn.addEventListener('click',function(){if(btn.dataset.mode!==mode)paint(btn.dataset.mode,true);});});
   ms.addEventListener('pointerdown',function(event){
     dragging=true;moved=0;startX=event.clientX;w=ms.clientWidth/2;

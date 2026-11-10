@@ -122,7 +122,7 @@
   }
   function blogCard(post,featured){
     var link=post.link||{url:'/blog',label:{en:'Read more',es:'Leer más',de:'Mehr lesen',zh:'阅读更多'}};
-    var arrowAfter=' <span aria-hidden="true">&#8592;</span>';
+    var arrowAfter=' <span aria-hidden="true">&#8594;</span>';
     var mode=postMode(post);
     return '<article class="post pf-item pf-post-card'+(featured?' post-feat':'')+'" data-kind="blog" data-sort="'+dateValue(post.date)+'">'+
       (featured?'<span class="pf-featured-star" aria-hidden="true">&#9733;</span>':'')+
@@ -554,6 +554,7 @@
     function setOpen(open,focus){
       if(open)positionPanel();
       panel.hidden=!open;
+      document.documentElement.classList.toggle('pf-search-open',open);
       toggle.setAttribute('aria-expanded',String(open));
       if(open&&focus&&input)window.setTimeout(function(){input.focus();},0);
     }
@@ -601,7 +602,7 @@
     var script=document.createElement('script');script.src=src;script.onload=done;script.onerror=done;document.body.appendChild(script);
   }
   function loadInteractions(done){
-    loadScript(sitePath('/blog-interactions.js?v=15'),function(){
+    loadScript(sitePath('/blog-interactions.js?v=16'),function(){
       loadScript('https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&render=explicit',function(){if(done)done();});
     });
   }
@@ -642,6 +643,13 @@
 (function(){
   if(!('ontouchstart' in window))return;
   var startY=0,startX=0;
+  /* Un panel con scroll propio (buscador, menú) debe poder volver a subir. */
+  function insideScrolledPanel(node){
+    for(;node&&node!==document.body&&node!==document.documentElement;node=node.parentElement){
+      if(node.scrollTop>0&&/(auto|scroll)/.test(getComputedStyle(node).overflowY))return true;
+    }
+    return false;
+  }
   document.addEventListener('touchstart',function(event){
     if(event.touches.length===1){startY=event.touches[0].clientY;startX=event.touches[0].clientX;}
   },{passive:true});
@@ -650,7 +658,7 @@
     var target=event.target;
     if(target&&target.closest&&target.closest('input,textarea,select,[contenteditable="true"]'))return;
     var dy=event.touches[0].clientY-startY,dx=event.touches[0].clientX-startX;
-    if(dy>0&&Math.abs(dy)>=Math.abs(dx))event.preventDefault();
+    if(dy>0&&Math.abs(dy)>=Math.abs(dx)&&!insideScrolledPanel(target))event.preventDefault();
   },{passive:false});
 })();
 
