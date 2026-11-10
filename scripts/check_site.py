@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Static checks for the public Primo Físico site."""
 from pathlib import Path
+import json
 import re
 import sys
 
@@ -25,7 +26,12 @@ for path in html_files:
     if re.search(r"\bonclick\s*=", text, re.I):
         errors.append(f"{rel}: inline onclick handler")
     for opening, body in re.findall(r"(<script\b[^>]*>)(.*?)</script>", text, re.I | re.S):
-        if not re.search(r"\bsrc\s*=", opening, re.I) and body.strip():
+        if re.search(r"\btype\s*=\s*['\"]application/ld\+json['\"]", opening, re.I):
+            try:
+                json.loads(body)
+            except ValueError:
+                errors.append(f"{rel}: invalid JSON-LD")
+        elif not re.search(r"\bsrc\s*=", opening, re.I) and body.strip():
             errors.append(f"{rel}: inline script")
         if "cdn.jsdelivr.net/npm/@supabase/supabase-js@" in opening and "integrity=" not in opening:
             errors.append(f"{rel}: Supabase CDN script without SRI")
